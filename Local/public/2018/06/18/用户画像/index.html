@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="用户画像，其实就是通过算法聚合成一类实现用户信息标签化。而本文就以电商用户为例，展示了如何从0到1做画像建模。 一、构建用户画像① 用户画像信息：基本属性，购买能力，行为特征，兴趣爱好，心理特征，社交网络 ② 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法 ③ 数据收集：网络日志数据，用户行为数据，网站交易数据 作用：了解用户的行为习惯，个性化营销及精准广告  静态数据来源：来源于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户画像">
+<meta property="og:url" content="http://yoursite.com/2018/06/18/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/index.html">
+<meta property="og:site_name" content="Winnie&#39;s big blog">
+<meta property="og:description" content="用户画像，其实就是通过算法聚合成一类实现用户信息标签化。而本文就以电商用户为例，展示了如何从0到1做画像建模。 一、构建用户画像① 用户画像信息：基本属性，购买能力，行为特征，兴趣爱好，心理特征，社交网络 ② 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法 ③ 数据收集：网络日志数据，用户行为数据，网站交易数据 作用：了解用户的行为习惯，个性化营销及精准广告  静态数据来源：来源于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-18T01:09:53.000Z">
+<meta property="article:modified_time" content="2020-05-18T01:12:11.300Z">
+<meta property="article:author" content="Winnie">
+<meta property="article:tag" content="产品">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/06/18/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>用户画像 | Winnie's big blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Winnie's big blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/18/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Winnie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winnie's big blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用户画像
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-18 09:09:53" itemprop="dateCreated datePublished" datetime="2018-06-18T09:09:53+08:00">2018-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-18 09:12:11" itemprop="dateModified" datetime="2020-05-18T09:12:11+08:00">2020-05-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>用户画像，其实就是通过算法聚合成一类实现用户信息标签化。而本文就以电商用户为例，展示了如何从0到1做画像建模。</p>
+<h2 id="一、构建用户画像"><a href="#一、构建用户画像" class="headerlink" title="一、构建用户画像"></a>一、构建用户画像</h2><p>① 用户画像信息：基本属性，购买能力，行为特征，兴趣爱好，心理特征，社交网络</p>
+<p>② 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法</p>
+<p>③ 数据收集：网络日志数据，用户行为数据，网站交易数据</p>
+<p>作用：了解用户的行为习惯，个性化营销及精准广告</p>
+<ul>
+<li>静态数据来源：来源于用户填的个人信息，及算法模型预测的数据</li>
+<li>动态信息数据： 用户行为产生的数据：注册，浏览，点击，购买，签收，评价，退货等</li>
+</ul>
+<p>—比较重要的行为：购买商品，浏览商品，放入购物车，关注商品等</p>
+<p>根据行为可以得出标签： 潮妈族，纠结商品，最大消费，退货数量，败家指数，品牌偏好，用户活跃度等<br><strong>确定标签与根据算法猜测的标签</strong></p>
+<ul>
+<li>确定的标签：比如用户购买了或者收藏了某个商品等</li>
+<li>猜测的标签：比如用户的性别，是男性的概率0.8。</li>
+</ul>
+<p>另外还有很多模型：孕妇模型，潜在汽车用户模型，用户价值模型</p>
+<p>比如：用户活跃度（活跃，沉睡，流失，未购买） 用户分群：电脑达人，数码潮人，家庭用户，网购达人，奶爸奶妈，单身贵族，闪购用户，时尚男女等</p>
+<h2 id="二、用户画像建模"><a href="#二、用户画像建模" class="headerlink" title="二、用户画像建模"></a>二、用户画像建模</h2><h3 id="1-客户消费订单表"><a href="#1-客户消费订单表" class="headerlink" title="1. 客户消费订单表"></a>1. 客户消费订单表</h3><p>根据用户消费的情况来提取的客户标签，用以了解用户的消费情况，消费习惯。</p>
+<p><strong>（1）客户消费订单表标签</strong>：</p>
+<p><strong>购买信息：</strong></p>
+<p>客户ID，第一次消费时间，最近一次消费时间，首单距今时间，尾单距今时间，近30/60/90天购买次数/购买金额（不含退拒），最大/最小消费金额，累计消费次数/金额（不含退拒） 累计使用代金券金额，客单价（含退拒），常用收货地区，常用支付方式，退货商品数量，退货商品金额，拒收商品金额/数量，最近一次退货时间，各地点下单总数/总额，上下午下单总数/总额。</p>
+<p><strong>购物车信息：</strong></p>
+<p>最近30天购物车商品件数/提交商品件数/购物车成功率/购物车放弃件数</p>
+<p><strong>（2）提取标签的作用</strong></p>
+<ul>
+<li>确定用户什么时候来的，多久没来了：第一次消费时间，最近一次消费时间，首单距今时间，尾单距今时间。</li>
+<li>最近消费能力：近30天购买次数（不含退拒），近30购买金额（不含退拒），近30天购买次数（含退拒），近30天购买金额（含退拒）。</li>
+<li>总体的消费情况：最小/大消费金额（可做个性化商品推荐），累计消费次数（不含退拒，可以计算客单价），累计消费金额，累计使用代金券金额（代金券爱好。）</li>
+<li>消费属性：常用收货地区，常用支付方式。</li>
+<li>购物车习惯：最近30天购物车次数，最近30天购物车提交商品件数，最近30天购物车商品件数，最近30天购物车放弃件数，最近30天购物车成功率。</li>
+<li>退货和习惯特征：退货商品数量，拒收商品数量，退货商品金额，拒收商品金额，最近一次退货时间 用户购物时间及地点习惯：各下单地点总数，各时间段下单总数。</li>
+</ul>
+<h3 id="2-客户购买类目表"><a href="#2-客户购买类目表" class="headerlink" title="2. 客户购买类目表"></a>2. 客户购买类目表</h3><p>—根据客户购买类目的情况提取的客户标签，用以了解类目的购买人群情况 。</p>
+<p>客户购买表标签：</p>
+<p>客户ID，一级/二级/三级分类ID/名称，近30天/90天/180天购买类目次数/金额，累计购买类目次数/金额，累计购买类目次数/金额，近30天/90天/180天购物车某类目次数/金额，累计购买类目次数/金额，累计购物车类目次数/金额，最后一次购买类目时间/距今天数</p>
+<h3 id="3-客户购买商店表"><a href="#3-客户购买商店表" class="headerlink" title="3. 客户购买商店表"></a>3. 客户购买商店表</h3><p>根据客户购买商店的情况提取的客户标签，用以了解商店及品牌的购买人群（做品牌营销等） 客户。</p>
+<p><strong>购买商店表标签：</strong></p>
+<p>用户ID，商店ID/名称，品牌ID/名称，最近30天购物车次数/商品件数/提交商品件数/成功率/放弃件数，最后一次购物车时间，最近90天商品排除退拒商品件数/金额，最近90天货到付款订单数，最近90天退换件数/金额，最近90天拒收件数/金额.</p>
+<h3 id="4-客户基本属性"><a href="#4-客户基本属性" class="headerlink" title="4. 客户基本属性"></a>4. 客户基本属性</h3><p>根据客户所填的属性标签与推算出来的标签，用以了解用户的基本属性（可用以个性营销，生日营销，星座营销等）。</p>
+<p><strong>客户基本属性标签：</strong></p>
+<p>客户ID，客户登录名，性别，生日，年龄，星座，大区域，省份，城市，城市等级，邮箱，邮箱运营商，加密手机，手机运营商，注册时间，登录ip地址，登录来源，邀请人，会员积分，已使用积分，会员等级名称，婚姻状况，学历，月收入，职业，性别模型，是否孕妇，是否有小孩，孩子性别及年龄概率，是否有车，潜在汽车用户概率，使用手机品牌/档次，用户忠诚度，用户购物类型，身材，身高。</p>
+<p><strong>数据来源：</strong></p>
+<p>用户表，用户调查表，孕妇模型表，马甲模型表，用户价值模型表等 根据算法得出的标签。</p>
+<p><strong>其中模型：</strong></p>
+<p>性别模型：用以推算用户的购买用品的性别倾向（不一定是真实性别）</p>
+<p><strong>（1）性别模型</strong></p>
+<p>用户性别：1男，0女，-1未识别 | 1，商品性别得分，2，用户购买商品性别得分。</p>
+<p>孩子性别：0仅有男孩，1仅有女孩，2，男女均匀，3，无法识别 |1，选择男童女童商品等</p>
+<p>性别验证： 随机抽样调查 ，与用户填写性恶爆匹配。</p>
+<p><strong>（2）用户购物模型</strong></p>
+<p>两种归类：</p>
+<p>用户购物类型：</p>
+<ol>
+<li>购物冲动型</li>
+<li>海淘犹豫型</li>
+<li>理性比较型</li>
+<li>目标明确型</li>
+<li>未识别</li>
+</ol>
+<p>构建：</p>
+<ol>
+<li>计算用户在对三级品类购物前流量时间和浏览sku数量</li>
+<li>kmeans聚类</li>
+</ol>
+<p>用户忠诚度模型：</p>
+<p>用户忠诚度：</p>
+<ol>
+<li>忠诚型用户</li>
+<li>偶尔型用户</li>
+<li>投资型用户</li>
+<li>浏览型用户</li>
+<li>未识别</li>
+</ol>
+<p>构建：</p>
+<ol>
+<li>只浏览不购买</li>
+<li>购买天数大于一定天数</li>
+<li>购买天数小于一定天数，大部分只有优惠彩购买 等</li>
+</ol>
+<h3 id="5-客户营销信息表"><a href="#5-客户营销信息表" class="headerlink" title="5. 客户营销信息表"></a>5. 客户营销信息表</h3><p>将用户营销相关的常用标签放到一张表中，方便使用。</p>
+<ul>
+<li><strong>客户营销信息表：</strong> 客户ID，营销手机号，第一个有效订单来源/地址/手机号，常用的手机号，常用的收货地址，不同收货地址的数量，客户分群，活跃状态，用户价值（重要，保持，流失等），纠结商品，纠结小时</li>
+<li><strong>主要来源表：</strong> 用户表，订单表，活动表，购物车表。</li>
+</ul>
+<p><strong>其中模型：</strong></p>
+<p><strong>（1）客户活跃状态模型</strong></p>
+<p>客户一般的活跃状态：</p>
+<ol>
+<li>注册未购买（只注册未购买，多事第三方登录）</li>
+<li>活跃（可以细分为高频，中频，低频）</li>
+<li>沉睡（近90天无购买，近60天无购买）</li>
+<li>流失 （近90天无购买，曾经购买）</li>
+</ol>
+<p><strong>（2）用户价值模型</strong></p>
+<p>体现用户对网站的价值对提供用户留存率非常有帮助</p>
+<p>使用RFM实现用户价值模型参考指标：</p>
+<ul>
+<li>最近一次消费时间（Recency）</li>
+<li>消费频率（Frequency）</li>
+<li>消费金额（Monetary）</li>
+</ul>
+<p>RFM 实现用户价值模型计算方法：</p>
+<ul>
+<li>使用指标：租金一次购买时间，近180天购买订单量，近180天购买金额，分N段进行RFM分数计算</li>
+<li>算出Recency_score,Frequency_score,Monetary_score,然后划分用户群</li>
+</ul>
+<p>用户价值分类</p>
+<h3 id="6-客户活动信息表"><a href="#6-客户活动信息表" class="headerlink" title="6. 客户活动信息表"></a>6. 客户活动信息表</h3><p>根据客户参与活动的情况提取的客户标签，用于了解用户对活动的参与情况，以进行活动的策划</p>
+<p><strong>客户活动信息表内容标签：</strong></p>
+<p>客户ID，用户促销明个度，满减促销敏感度，打折促销敏感度，换购促销敏感度，满赠促销敏感度，购买力分段，品牌偏好，品类偏好，颜色偏好，败家偏好，冲动偏好，累计积分，已用积分，可以积分，累计代金券数量/金额，已用代金券数量/金额，过期代金券数量/金额，可用代金券数量/金额</p>
+<p><strong>标签作用：</strong></p>
+<p>确定用户喜欢那种活动类型：用户促销敏感度，满减促销敏感度，满赠敏感度，打折促销敏感度，换购促销敏感度，团购促销敏感度等</p>
+<p><strong>促销敏感度模型：</strong></p>
+<p>根据用户购买的活动类型订单数与金额数已判断其属于哪类人群</p>
+<p>用户有什么偏好：店铺偏好，品牌偏好，品类偏好，颜色偏好 用户指数：购买力分段，败家指数，冲动指数 用户购买力高中低模型：</p>
+<p>—从购物车，客单价来判断 用户购买力高中低端模型：</p>
+<ol>
+<li>从购物车来判断</li>
+<li>从客单价来判断</li>
+</ol>
+<p><strong>指数模型：</strong></p>
+<p><strong>败家指数：</strong></p>
+<ul>
+<li>使用购买特征山炮数量来识别（刚出的苹果产品，奢侈品）</li>
+<li>结合用户的订单金额</li>
+</ul>
+<p><strong>冲动指数 ：</strong></p>
+<ul>
+<li>使用特征商品（同品类价格较高商品）平均购物车停留时间</li>
+<li>结合特征商品（同品类价格较高商品）的购买数量</li>
+</ul>
+<h3 id="7-客户访问信息表"><a href="#7-客户访问信息表" class="headerlink" title="7. 客户访问信息表"></a>7. 客户访问信息表</h3><p>根据客户访问的情况提取的客户标签以了解访问习惯。</p>
+<p><strong>客户访问信息标签：</strong></p>
+<p>最近一次/第一次pc端访问日期/session/cookies/pv/使用浏览器/操作系统/，最近一次/ 第一次app端访问日期/操作系统，最近一次/第一次访问ip/访问城市/省份，近7天/15天/30天/60天/90天app端/pc端访问次数，近30天pc端/app端访问天数/访问并购买次数/访问pv/访问评价pv/ip数/，app及pc端各时间段访问的次数。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%A7%E5%93%81/" rel="tag"># 产品</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/04/19/%E8%BD%AC%E5%B2%97%E4%BA%A7%E5%93%81%E5%BF%85%E7%BB%8F%E4%B9%8B%E8%B7%AF/" rel="prev" title="转岗产品必经之路">
+      <i class="fa fa-chevron-left"></i> 转岗产品必经之路
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/07/08/%E6%95%8F%E6%8D%B7%E6%A0%B8%E5%BF%83/" rel="next" title="敏捷核心">
+      敏捷核心 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、构建用户画像"><span class="nav-number">1.</span> <span class="nav-text">一、构建用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、用户画像建模"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-客户消费订单表"><span class="nav-number">2.1.</span> <span class="nav-text">1. 客户消费订单表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-客户购买类目表"><span class="nav-number">2.2.</span> <span class="nav-text">2. 客户购买类目表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-客户购买商店表"><span class="nav-number">2.3.</span> <span class="nav-text">3. 客户购买商店表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-客户基本属性"><span class="nav-number">2.4.</span> <span class="nav-text">4. 客户基本属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-客户营销信息表"><span class="nav-number">2.5.</span> <span class="nav-text">5. 客户营销信息表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-客户活动信息表"><span class="nav-number">2.6.</span> <span class="nav-text">6. 客户活动信息表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-客户访问信息表"><span class="nav-number">2.7.</span> <span class="nav-text">7. 客户访问信息表</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Winnie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
