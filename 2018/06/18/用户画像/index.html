@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、构建用户画像基本思路 用户画像基本纬度：基本属性，购买能力，行为路径特征，偏好，心理意识特征，社交圈 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法 数据收集：网络日志数据，用户行为数据，平台交易数据  作用了解用户的行为习惯，引导用户行为路径，个性化营销及精准广告 数据来源 静态数据来源：来源于用户填的个人信息，及算法模型预测的数据 动态信息数据： 用户行为产生的数据：注册，">
+  <meta name="description" content="一、构建用户画像基本思路  用户画像基本纬度：基本属性，购买能力，行为路径特征，偏好，心理意识特征，社交圈 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法 数据收集：网络日志数据，用户行为数据，平台交易数据   作用了解用户的行为习惯，引导用户行为路径，个性化营销及精准广告 数据来源  静态数据来源：来源于用户填的个人信息，及算法模型预测的数据 动态信息数据： 用户行为产生的数据：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用户画像">
 <meta property="og:url" content="http://yoursite.com/2018/06/18/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/index.html">
 <meta property="og:site_name" content="Winnie&#39;s big blog">
-<meta property="og:description" content="一、构建用户画像基本思路 用户画像基本纬度：基本属性，购买能力，行为路径特征，偏好，心理意识特征，社交圈 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法 数据收集：网络日志数据，用户行为数据，平台交易数据  作用了解用户的行为习惯，引导用户行为路径，个性化营销及精准广告 数据来源 静态数据来源：来源于用户填的个人信息，及算法模型预测的数据 动态信息数据： 用户行为产生的数据：注册，">
+<meta property="og:description" content="一、构建用户画像基本思路  用户画像基本纬度：基本属性，购买能力，行为路径特征，偏好，心理意识特征，社交圈 行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法 数据收集：网络日志数据，用户行为数据，平台交易数据   作用了解用户的行为习惯，引导用户行为路径，个性化营销及精准广告 数据来源  静态数据来源：来源于用户填的个人信息，及算法模型预测的数据 动态信息数据： 用户行为产生的数据：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-06-18T01:09:53.000Z">
-<meta property="article:modified_time" content="2020-05-20T13:04:53.313Z">
+<meta property="article:modified_time" content="2020-05-27T05:38:03.385Z">
 <meta property="article:author" content="Winnie">
 <meta property="article:tag" content="产品">
 <meta name="twitter:card" content="summary">
@@ -186,7 +186,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-20 21:04:53" itemprop="dateModified" datetime="2020-05-20T21:04:53+08:00">2020-05-20</time>
+                <time title="修改时间：2020-05-27 13:38:03" itemprop="dateModified" datetime="2020-05-27T13:38:03+08:00">2020-05-27</time>
               </span>
 
           
@@ -200,22 +200,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、构建用户画像"><a href="#一、构建用户画像" class="headerlink" title="一、构建用户画像"></a>一、构建用户画像</h2><h4 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h4><ul>
+        <h2 id="一、构建用户画像"><a href="#一、构建用户画像" class="headerlink" title="一、构建用户画像"></a>一、构建用户画像</h2><h4 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h4><blockquote>
+<ul>
 <li>用户画像基本纬度：基本属性，购买能力，行为路径特征，偏好，心理意识特征，社交圈</li>
 <li>行为建模：文本挖掘，自然语言处理，机器学习，预测算法，聚类算法</li>
 <li>数据收集：网络日志数据，用户行为数据，平台交易数据</li>
 </ul>
+</blockquote>
 <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>了解用户的行为习惯，引导用户行为路径，个性化营销及精准广告</p>
-<h4 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h4><ul>
+<h4 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h4><blockquote>
+<ul>
 <li>静态数据来源：来源于用户填的个人信息，及算法模型预测的数据</li>
 <li>动态信息数据： 用户行为产生的数据：注册，浏览，点击，购买，签收，评价，退货等</li>
 </ul>
+</blockquote>
 <h4 id="重要行为"><a href="#重要行为" class="headerlink" title="重要行为"></a>重要行为</h4><p>购买商品，浏览商品，围观商品，关注店铺，退货</p>
 <p>根据行为可以得出标签：忠实用户，珠宝爱好者，深夜淘宝者等等</p>
 <h4 id="用户模型"><a href="#用户模型" class="headerlink" title="用户模型"></a>用户模型</h4><p>有很多模型：潜在用户模型，用户价值模型等等</p>
 <p>比如：用户活跃度（活跃，沉睡，流失，未购买） 用户分群：电脑达人，数码潮人，家庭用户，网购达人，奶爸奶妈，单身贵族，闪购用户，时尚男女等</p>
+<h4 id="提取标签的作用"><a href="#提取标签的作用" class="headerlink" title="提取标签的作用"></a>提取标签的作用</h4><blockquote>
+<ul>
+<li>确定用户什么时候来的，多久没来了：第一次消费时间，最近一次消费时间，首单距今时间，尾单距今时间。</li>
+<li>最近消费能力：近30天购买次数（不含退拒），近30购买金额（不含退拒），近30天购买次数（含退拒），近30天购买金额（含退拒）。</li>
+<li>总体的消费情况：最小/大消费金额（可做个性化商品推荐），累计消费次数（不含退拒，可以计算客单价），累计消费金额，累计使用代金券金额（代金券爱好。）</li>
+<li>消费属性：常用收货地区，常用支付方式。</li>
+<li>购物车习惯：最近30天购物车次数，最近30天购物车提交商品件数，最近30天购物车商品件数，最近30天购物车放弃件数，最近30天购物车成功率。</li>
+<li>退货和习惯特征：退货商品数量，拒收商品数量，退货商品金额，拒收商品金额，最近一次退货时间 用户购物时间及地点习惯：各下单地点总数，各时间段下单总数。</li>
+<li>用户喜好：围观信息，浏览信息，出价信息</li>
+</ul>
+</blockquote>
+<p>通过用户购买行为标签可以大致模拟出用户行为模型。</p>
+<p>where（在哪里）：消费属性中提取</p>
+<p>what：用户喜好</p>
+<p>Why: 为什么喜欢这个</p>
+<p>How：怎么去满足这个喜好</p>
 <h2 id="二、用户画像建模"><a href="#二、用户画像建模" class="headerlink" title="二、用户画像建模"></a>二、用户画像建模</h2><h3 id="客户消费订单表"><a href="#客户消费订单表" class="headerlink" title="客户消费订单表"></a>客户消费订单表</h3><p>根据用户消费的情况来提取的客户标签，用以了解用户的消费情况，消费习惯。</p>
 <h5 id="1）客户消费订单表标签"><a href="#1）客户消费订单表标签" class="headerlink" title="1）客户消费订单表标签"></a>1）客户消费订单表标签</h5><p><strong>购买信息：</strong></p>
+<blockquote>
 <ul>
 <li>客户ID</li>
 <li>第一次消费时间</li>
@@ -236,8 +257,11 @@
 <li>各地点下单总数 / 总额</li>
 <li>上下午下单总数 / 总额</li>
 </ul>
+</blockquote>
 <p><strong>围观信息：</strong></p>
+<blockquote>
 <ul>
+<li>客户ID</li>
 <li>最近30天围观商品件数</li>
 <li>围观商品竞拍件数</li>
 <li>围观商品竞拍成功率</li>
@@ -245,61 +269,88 @@
 <li>围观商品漏拍件数</li>
 <li>围观商品竞拍成功违约件数</li>
 </ul>
-<h5 id="提取标签的作用"><a href="#提取标签的作用" class="headerlink" title="提取标签的作用"></a>提取标签的作用</h5><ul>
-<li>确定用户什么时候来的，多久没来了：第一次消费时间，最近一次消费时间，首单距今时间，尾单距今时间。</li>
-<li>最近消费能力：近30天购买次数（不含退拒），近30购买金额（不含退拒），近30天购买次数（含退拒），近30天购买金额（含退拒）。</li>
-<li>总体的消费情况：最小/大消费金额（可做个性化商品推荐），累计消费次数（不含退拒，可以计算客单价），累计消费金额，累计使用代金券金额（代金券爱好。）</li>
-<li>消费属性：常用收货地区，常用支付方式。</li>
-<li>购物车习惯：最近30天购物车次数，最近30天购物车提交商品件数，最近30天购物车商品件数，最近30天购物车放弃件数，最近30天购物车成功率。</li>
-<li>退货和习惯特征：退货商品数量，拒收商品数量，退货商品金额，拒收商品金额，最近一次退货时间 用户购物时间及地点习惯：各下单地点总数，各时间段下单总数。</li>
-<li>用户喜好：围观信息，浏览信息，出价信息</li>
-</ul>
-<p>通过用户购买行为标签可以大致模拟出用户行为。</p>
-<p>who（谁）：用户ID</p>
-<p>where（在哪里）：消费属性中提取</p>
-<p>what：用户喜好</p>
-<p>Why:</p>
+</blockquote>
 <h3 id="2-客户购买类目表"><a href="#2-客户购买类目表" class="headerlink" title="2. 客户购买类目表"></a>2. 客户购买类目表</h3><p>—根据客户购买类目的情况提取的客户标签，用以了解类目的购买人群情况 。</p>
-<p>客户购买表标签：</p>
-<p>客户ID，一级/二级/三级分类ID/名称，近30天/90天/180天购买类目次数/金额，累计购买类目次数/金额，累计购买类目次数/金额，近30天/90天/180天购物车某类目次数/金额，累计购买类目次数/金额，累计购物车类目次数/金额，最后一次购买类目时间/距今天数</p>
+<h5 id="1）客户购买表："><a href="#1）客户购买表：" class="headerlink" title="1）客户购买表："></a>1）客户购买表：</h5><blockquote>
+<ul>
+<li>客户ID</li>
+<li>一级/二级/三级分类ID/名称</li>
+<li>近30天/90天/180天购买类目次数/金额</li>
+<li>累计购买类目次数/金额</li>
+<li>累计购买类目次数/金额</li>
+<li>近30天/90天/180天购物车某类目次数/金额</li>
+<li>累计购买类目次数/金额</li>
+<li>累计购物车类目次数/金额</li>
+<li>最后一次购买类目时间/距今天数</li>
+</ul>
+</blockquote>
 <h3 id="3-客户购买商店表"><a href="#3-客户购买商店表" class="headerlink" title="3. 客户购买商店表"></a>3. 客户购买商店表</h3><p>根据客户购买商店的情况提取的客户标签，用以了解商店及品牌的购买人群（做品牌营销等） 客户。</p>
-<p><strong>购买商店表标签：</strong></p>
-<p>用户ID，商店ID/名称，品牌ID/名称，最近30天购物车次数/商品件数/提交商品件数/成功率/放弃件数，最后一次购物车时间，最近90天商品排除退拒商品件数/金额，最近90天货到付款订单数，最近90天退换件数/金额，最近90天拒收件数/金额.</p>
+<h5 id="1）购买商店表："><a href="#1）购买商店表：" class="headerlink" title="1）购买商店表："></a>1）购买商店表：</h5><blockquote>
+<ul>
+<li>用户ID，</li>
+<li>商店ID/名称，</li>
+<li>品牌ID/名称，</li>
+<li>最近30天购物车次数/商品件数/提交商品件数/成功率/放弃件数，</li>
+<li>最后一次购物车时间，</li>
+<li>最近90天商品排除退拒商品件数/金额，</li>
+<li>最近90天货到付款订单数，</li>
+<li>最近90天退换件数/金额，</li>
+<li>最近90天拒收件数/金额.</li>
+</ul>
+</blockquote>
 <h3 id="4-客户基本属性"><a href="#4-客户基本属性" class="headerlink" title="4. 客户基本属性"></a>4. 客户基本属性</h3><p>根据客户所填的属性标签与推算出来的标签，用以了解用户的基本属性（可用以个性营销，生日营销，星座营销等）。</p>
-<p><strong>客户基本属性标签：</strong></p>
-<p>客户ID，客户登录名，性别，生日，年龄，星座，大区域，省份，城市，城市等级，邮箱，邮箱运营商，加密手机，手机运营商，注册时间，登录ip地址，登录来源，邀请人，会员积分，已使用积分，会员等级名称，婚姻状况，学历，月收入，职业，性别模型，是否孕妇，是否有小孩，孩子性别及年龄概率，是否有车，潜在汽车用户概率，使用手机品牌/档次，用户忠诚度，用户购物类型，身材，身高。</p>
-<p><strong>数据来源：</strong></p>
-<p>用户表，用户调查表，孕妇模型表，马甲模型表，用户价值模型表等 根据算法得出的标签。</p>
-<p><strong>其中模型：</strong></p>
-<p>性别模型：用以推算用户的购买用品的性别倾向（不一定是真实性别）</p>
-<p><strong>（1）性别模型</strong></p>
-<p>用户性别：1男，0女，-1未识别 | 1，商品性别得分，2，用户购买商品性别得分。</p>
-<p>孩子性别：0仅有男孩，1仅有女孩，2，男女均匀，3，无法识别 |1，选择男童女童商品等</p>
+<h5 id="1）客户基本属性"><a href="#1）客户基本属性" class="headerlink" title="1）客户基本属性"></a>1）客户基本属性</h5><blockquote>
+<ul>
+<li>客户ID，</li>
+<li>客户登录名</li>
+<li>性别，生日，年龄，星座，身材，身高</li>
+<li>大区域，省份，城市，城市等级</li>
+<li>邮箱，邮箱运营商，加密手机，手机运营商</li>
+<li>注册时间，登录ip地址，登录来源</li>
+<li>会员积分，已使用积分，会员等级名称</li>
+<li>婚姻状况，学历，月收入，职业</li>
+<li>性别模型，是否孕妇，是否有小孩，孩子性别及年龄概率</li>
+<li>是否有车，潜在汽车用户概率</li>
+<li>使用手机品牌/档次</li>
+<li>用户忠诚度</li>
+<li>用户购物类型</li>
+</ul>
+</blockquote>
+<h5 id="2）其中模型"><a href="#2）其中模型" class="headerlink" title="2）其中模型"></a>2）其中模型</h5><h6 id="（1）性别模型"><a href="#（1）性别模型" class="headerlink" title="（1）性别模型"></a>（1）性别模型</h6><blockquote>
+<p>用户性别：1男，0女，-1未识别 </p>
+<ul>
+<li>1、商品性别得分</li>
+<li>2、用户购买商品性别得分</li>
+</ul>
+</blockquote>
+<p>孩子性别：0仅有男孩，1仅有女孩，2，男女均匀，3，无法识别 </p>
+<blockquote>
+<p>选择男童女童商品等</p>
+</blockquote>
 <p>性别验证： 随机抽样调查 ，与用户填写性恶爆匹配。</p>
-<p><strong>（2）用户购物模型</strong></p>
-<p>两种归类：</p>
-<p>用户购物类型：</p>
-<ol>
+<h6 id="（2）用户购物模型"><a href="#（2）用户购物模型" class="headerlink" title="（2）用户购物模型"></a>（2）用户购物模型</h6><blockquote>
+<ul>
 <li>购物冲动型</li>
 <li>海淘犹豫型</li>
 <li>理性比较型</li>
 <li>目标明确型</li>
 <li>未识别</li>
-</ol>
+</ul>
+</blockquote>
 <p>构建：</p>
 <ol>
 <li>计算用户在对三级品类购物前流量时间和浏览sku数量</li>
 <li>kmeans聚类</li>
 </ol>
-<p>用户忠诚度模型：</p>
-<p>用户忠诚度：</p>
-<ol>
+<h6 id="（3）用户忠诚度模型："><a href="#（3）用户忠诚度模型：" class="headerlink" title="（3）用户忠诚度模型："></a>（3）用户忠诚度模型：</h6><blockquote>
+<ul>
 <li>忠诚型用户</li>
 <li>偶尔型用户</li>
 <li>投资型用户</li>
 <li>浏览型用户</li>
 <li>未识别</li>
-</ol>
+</ul>
+</blockquote>
 <p>构建：</p>
 <ol>
 <li>只浏览不购买</li>
@@ -307,21 +358,32 @@
 <li>购买天数小于一定天数，大部分只有优惠彩购买 等</li>
 </ol>
 <h3 id="5-客户营销信息表"><a href="#5-客户营销信息表" class="headerlink" title="5. 客户营销信息表"></a>5. 客户营销信息表</h3><p>将用户营销相关的常用标签放到一张表中，方便使用。</p>
+<h5 id="1）信息表"><a href="#1）信息表" class="headerlink" title="1）信息表"></a>1）信息表</h5><blockquote>
 <ul>
-<li><strong>客户营销信息表：</strong> 客户ID，营销手机号，第一个有效订单来源/地址/手机号，常用的手机号，常用的收货地址，不同收货地址的数量，客户分群，活跃状态，用户价值（重要，保持，流失等），纠结商品，纠结小时</li>
-<li><strong>主要来源表：</strong> 用户表，订单表，活动表，购物车表。</li>
+<li>客户ID，</li>
+<li>营销手机号，</li>
+<li>第一个有效订单来源/地址/手机号，</li>
+<li>常用的手机号，</li>
+<li>常用的收货地址，</li>
+<li>不同收货地址的数量，</li>
+<li>客户分群，</li>
+<li>活跃状态，</li>
+<li>用户价值（重要，保持，流失等），</li>
+<li>纠结商品，</li>
+<li>纠结小时</li>
 </ul>
-<p><strong>其中模型：</strong></p>
-<p><strong>（1）客户活跃状态模型</strong></p>
-<p>客户一般的活跃状态：</p>
-<ol>
+</blockquote>
+<p>主要来源表： 用户表，订单表，活动表，购物车表。</p>
+<h5 id="2）其中模型："><a href="#2）其中模型：" class="headerlink" title="2）其中模型："></a>2）其中模型：</h5><h6 id="（1）客户活跃状态模型"><a href="#（1）客户活跃状态模型" class="headerlink" title="（1）客户活跃状态模型"></a>（1）客户活跃状态模型</h6><blockquote>
+<ul>
 <li>注册未购买（只注册未购买，多事第三方登录）</li>
 <li>活跃（可以细分为高频，中频，低频）</li>
 <li>沉睡（近90天无购买，近60天无购买）</li>
 <li>流失 （近90天无购买，曾经购买）</li>
-</ol>
-<p><strong>（2）用户价值模型</strong></p>
-<p>体现用户对网站的价值对提供用户留存率非常有帮助</p>
+</ul>
+</blockquote>
+<h6 id="（2）用户价值模型"><a href="#（2）用户价值模型" class="headerlink" title="（2）用户价值模型"></a>（2）用户价值模型</h6><p>体现用户对网站的价值对提供用户留存率非常有帮助</p>
+<blockquote>
 <p>使用RFM实现用户价值模型参考指标：</p>
 <ul>
 <li>最近一次消费时间（Recency）</li>
@@ -331,36 +393,78 @@
 <p>RFM 实现用户价值模型计算方法：</p>
 <ul>
 <li>使用指标：租金一次购买时间，近180天购买订单量，近180天购买金额，分N段进行RFM分数计算</li>
-<li>算出Recency_score,Frequency_score,Monetary_score,然后划分用户群</li>
+<li>算出Recency_score,Frequency_score,Monetary_score,然后划分用户价值分类</li>
 </ul>
-<p>用户价值分类</p>
+<p>编号次序RFM,1代表高，0代表低</p>
+<p>重要价值客户（111）：最近消费时间近、消费频次和消费金额都很高，必须是VIP啊！</p>
+<p>重要保持客户（011）：最近消费时间较远，但消费频次和金额都很高，说明这是个一段时间没来的忠诚客户，我们需要主动和他保持联系。</p>
+<p>重要发展客户（101）：最近消费时间较近、消费金额高，但频次不高，忠诚度不高，很有潜力的用户，必须重点发展。</p>
+<p>重要挽留客户（001）：最近消费时间较远、消费频次不高，但消费金额高的用户，可能是将要流失或者已经要流失的用户，应当基于挽留措施。</p>
+</blockquote>
 <h3 id="6-客户活动信息表"><a href="#6-客户活动信息表" class="headerlink" title="6. 客户活动信息表"></a>6. 客户活动信息表</h3><p>根据客户参与活动的情况提取的客户标签，用于了解用户对活动的参与情况，以进行活动的策划</p>
-<p><strong>客户活动信息表内容标签：</strong></p>
-<p>客户ID，用户促销明个度，满减促销敏感度，打折促销敏感度，换购促销敏感度，满赠促销敏感度，购买力分段，品牌偏好，品类偏好，颜色偏好，败家偏好，冲动偏好，累计积分，已用积分，可以积分，累计代金券数量/金额，已用代金券数量/金额，过期代金券数量/金额，可用代金券数量/金额</p>
-<p><strong>标签作用：</strong></p>
-<p>确定用户喜欢那种活动类型：用户促销敏感度，满减促销敏感度，满赠敏感度，打折促销敏感度，换购促销敏感度，团购促销敏感度等</p>
-<p><strong>促销敏感度模型：</strong></p>
-<p>根据用户购买的活动类型订单数与金额数已判断其属于哪类人群</p>
-<p>用户有什么偏好：店铺偏好，品牌偏好，品类偏好，颜色偏好 用户指数：购买力分段，败家指数，冲动指数 用户购买力高中低模型：</p>
-<p>—从购物车，客单价来判断 用户购买力高中低端模型：</p>
-<ol>
-<li>从购物车来判断</li>
-<li>从客单价来判断</li>
-</ol>
-<p><strong>指数模型：</strong></p>
-<p><strong>败家指数：</strong></p>
+<h5 id="1）客户活动信息表内容："><a href="#1）客户活动信息表内容：" class="headerlink" title="1）客户活动信息表内容："></a>1）客户活动信息表内容：</h5><blockquote>
 <ul>
-<li>使用购买特征山炮数量来识别（刚出的苹果产品，奢侈品）</li>
+<li>客户ID</li>
+<li>用户促销敏感度，</li>
+<li>满减促销敏感度，</li>
+<li>打折促销敏感度，</li>
+<li>换购促销敏感度，</li>
+<li>满赠促销敏感度，</li>
+<li>购买力分段，</li>
+<li>品牌偏好，</li>
+<li>品类偏好，</li>
+<li>颜色偏好，</li>
+<li>败家偏好，</li>
+<li>冲动偏好，</li>
+<li>累计积分，</li>
+<li>已用积分，</li>
+<li>可以积分，</li>
+<li>累计代金券数量/金额，</li>
+<li>已用代金券数量/金额，</li>
+<li>过期代金券数量/金额，</li>
+<li>可用代金券数量/金额</li>
+</ul>
+</blockquote>
+<h5 id="2）内容作用："><a href="#2）内容作用：" class="headerlink" title="2）内容作用："></a>2）内容作用：</h5><p>确定用户喜欢那种活动类型：用户促销敏感度，满减促销敏感度，满赠敏感度，打折促销敏感度，换购促销敏感度，团购促销敏感度等</p>
+<h5 id="3）其中模型"><a href="#3）其中模型" class="headerlink" title="3）其中模型"></a>3）其中模型</h5><h6 id="（1）促销敏感度模型："><a href="#（1）促销敏感度模型：" class="headerlink" title="（1）促销敏感度模型："></a>（1）促销敏感度模型：</h6><p>根据用户购买的活动类型订单数与金额数已判断其属于哪类人群</p>
+<h6 id="（2）用户喜好模型"><a href="#（2）用户喜好模型" class="headerlink" title="（2）用户喜好模型"></a>（2）用户喜好模型</h6><blockquote>
+<ul>
+<li>店铺偏好</li>
+<li>品牌偏好</li>
+<li>品类偏好</li>
+<li>颜色偏好 </li>
+</ul>
+</blockquote>
+<h6 id="（3）购买力模型"><a href="#（3）购买力模型" class="headerlink" title="（3）购买力模型"></a>（3）购买力模型</h6><p>从购物车，客单价来判断 用户购买力高中低端模型：</p>
+<blockquote>
+<ul>
+<li>从围观来判断</li>
+<li>从客单价来判断</li>
+</ul>
+</blockquote>
+<h6 id="（4）指数模型–败家指数："><a href="#（4）指数模型–败家指数：" class="headerlink" title="（4）指数模型–败家指数："></a>（4）指数模型–败家指数：</h6><blockquote>
+<ul>
+<li>使用购买特征山炮数量来识别（奢侈品）</li>
 <li>结合用户的订单金额</li>
 </ul>
-<p><strong>冲动指数 ：</strong></p>
+</blockquote>
+<h6 id="（5）指数模型–冲动指数-："><a href="#（5）指数模型–冲动指数-：" class="headerlink" title="（5）指数模型–冲动指数 ："></a>（5）指数模型–冲动指数 ：</h6><blockquote>
 <ul>
 <li>使用特征商品（同品类价格较高商品）平均购物车停留时间</li>
 <li>结合特征商品（同品类价格较高商品）的购买数量</li>
 </ul>
+</blockquote>
 <h3 id="7-客户访问信息表"><a href="#7-客户访问信息表" class="headerlink" title="7. 客户访问信息表"></a>7. 客户访问信息表</h3><p>根据客户访问的情况提取的客户标签以了解访问习惯。</p>
-<p><strong>客户访问信息标签：</strong></p>
-<p>最近一次/第一次pc端访问日期/session/cookies/pv/使用浏览器/操作系统/，最近一次/ 第一次app端访问日期/操作系统，最近一次/第一次访问ip/访问城市/省份，近7天/15天/30天/60天/90天app端/pc端访问次数，近30天pc端/app端访问天数/访问并购买次数/访问pv/访问评价pv/ip数/，app及pc端各时间段访问的次数。</p>
+<h5 id="1）客户访问信息："><a href="#1）客户访问信息：" class="headerlink" title="1）客户访问信息："></a>1）客户访问信息：</h5><blockquote>
+<ul>
+<li>最近一次/第一次pc端访问日期/session/cookies/pv/使用浏览器/操作系统/</li>
+<li>最近一次/ 第一次app端访问日期/操作系统</li>
+<li>最近一次/第一次访问ip/访问城市/省份</li>
+<li>近7天/15天/30天/60天/90天app端/pc端访问次数</li>
+<li>近30天pc端/app端访问天数/访问并购买次数/访问pv/访问评价pv/ip数/</li>
+<li>app及pc端各时间段访问的次数</li>
+</ul>
+</blockquote>
 
     </div>
 
@@ -444,7 +548,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、构建用户画像"><span class="nav-number">1.</span> <span class="nav-text">一、构建用户画像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思路"><span class="nav-number">1.0.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">1.0.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据来源"><span class="nav-number">1.0.3.</span> <span class="nav-text">数据来源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要行为"><span class="nav-number">1.0.4.</span> <span class="nav-text">重要行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户模型"><span class="nav-number">1.0.5.</span> <span class="nav-text">用户模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、用户画像建模"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#客户消费订单表"><span class="nav-number">2.1.</span> <span class="nav-text">客户消费订单表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）客户消费订单表标签"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">1）客户消费订单表标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提取标签的作用"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">提取标签的作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-客户购买类目表"><span class="nav-number">2.2.</span> <span class="nav-text">2. 客户购买类目表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-客户购买商店表"><span class="nav-number">2.3.</span> <span class="nav-text">3. 客户购买商店表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-客户基本属性"><span class="nav-number">2.4.</span> <span class="nav-text">4. 客户基本属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-客户营销信息表"><span class="nav-number">2.5.</span> <span class="nav-text">5. 客户营销信息表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-客户活动信息表"><span class="nav-number">2.6.</span> <span class="nav-text">6. 客户活动信息表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-客户访问信息表"><span class="nav-number">2.7.</span> <span class="nav-text">7. 客户访问信息表</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、构建用户画像"><span class="nav-number">1.</span> <span class="nav-text">一、构建用户画像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思路"><span class="nav-number">1.0.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">1.0.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据来源"><span class="nav-number">1.0.3.</span> <span class="nav-text">数据来源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要行为"><span class="nav-number">1.0.4.</span> <span class="nav-text">重要行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户模型"><span class="nav-number">1.0.5.</span> <span class="nav-text">用户模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取标签的作用"><span class="nav-number">1.0.6.</span> <span class="nav-text">提取标签的作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、用户画像建模"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#客户消费订单表"><span class="nav-number">2.1.</span> <span class="nav-text">客户消费订单表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）客户消费订单表标签"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">1）客户消费订单表标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-客户购买类目表"><span class="nav-number">2.2.</span> <span class="nav-text">2. 客户购买类目表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）客户购买表："><span class="nav-number">2.2.0.1.</span> <span class="nav-text">1）客户购买表：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-客户购买商店表"><span class="nav-number">2.3.</span> <span class="nav-text">3. 客户购买商店表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）购买商店表："><span class="nav-number">2.3.0.1.</span> <span class="nav-text">1）购买商店表：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-客户基本属性"><span class="nav-number">2.4.</span> <span class="nav-text">4. 客户基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）客户基本属性"><span class="nav-number">2.4.0.1.</span> <span class="nav-text">1）客户基本属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）其中模型"><span class="nav-number">2.4.0.2.</span> <span class="nav-text">2）其中模型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#（1）性别模型"><span class="nav-number">2.4.0.2.1.</span> <span class="nav-text">（1）性别模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（2）用户购物模型"><span class="nav-number">2.4.0.2.2.</span> <span class="nav-text">（2）用户购物模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（3）用户忠诚度模型："><span class="nav-number">2.4.0.2.3.</span> <span class="nav-text">（3）用户忠诚度模型：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-客户营销信息表"><span class="nav-number">2.5.</span> <span class="nav-text">5. 客户营销信息表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）信息表"><span class="nav-number">2.5.0.1.</span> <span class="nav-text">1）信息表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）其中模型："><span class="nav-number">2.5.0.2.</span> <span class="nav-text">2）其中模型：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#（1）客户活跃状态模型"><span class="nav-number">2.5.0.2.1.</span> <span class="nav-text">（1）客户活跃状态模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（2）用户价值模型"><span class="nav-number">2.5.0.2.2.</span> <span class="nav-text">（2）用户价值模型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-客户活动信息表"><span class="nav-number">2.6.</span> <span class="nav-text">6. 客户活动信息表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）客户活动信息表内容："><span class="nav-number">2.6.0.1.</span> <span class="nav-text">1）客户活动信息表内容：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）内容作用："><span class="nav-number">2.6.0.2.</span> <span class="nav-text">2）内容作用：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3）其中模型"><span class="nav-number">2.6.0.3.</span> <span class="nav-text">3）其中模型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#（1）促销敏感度模型："><span class="nav-number">2.6.0.3.1.</span> <span class="nav-text">（1）促销敏感度模型：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（2）用户喜好模型"><span class="nav-number">2.6.0.3.2.</span> <span class="nav-text">（2）用户喜好模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（3）购买力模型"><span class="nav-number">2.6.0.3.3.</span> <span class="nav-text">（3）购买力模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（4）指数模型–败家指数："><span class="nav-number">2.6.0.3.4.</span> <span class="nav-text">（4）指数模型–败家指数：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#（5）指数模型–冲动指数-："><span class="nav-number">2.6.0.3.5.</span> <span class="nav-text">（5）指数模型–冲动指数 ：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-客户访问信息表"><span class="nav-number">2.7.</span> <span class="nav-text">7. 客户访问信息表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）客户访问信息："><span class="nav-number">2.7.0.1.</span> <span class="nav-text">1）客户访问信息：</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
