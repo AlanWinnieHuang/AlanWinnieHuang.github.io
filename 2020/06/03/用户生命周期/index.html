@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="用户生命周期介绍 1、用户的生命周期和产品生命周期是不同的两个概念。 用户生命周期就是用户从开始接触产品到离开产品的整个过程。产品生命周期则是一款产品从创意概念到研发上市到死亡的过程。用户生命周期不等于产品生命周期。衰退期的产品，也会有新用户下载使用；新上架的产品，也会有用户流失。2、用户生命周期分为：导入期、成长期、成熟期、休眠期、流失期。 导入期：用户获取阶段，将市场中的潜在用户流量转化为自家">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户生命周期">
+<meta property="og:url" content="http://yoursite.com/2020/06/03/%E7%94%A8%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:site_name" content="Winnie&#39;s big blog">
+<meta property="og:description" content="用户生命周期介绍 1、用户的生命周期和产品生命周期是不同的两个概念。 用户生命周期就是用户从开始接触产品到离开产品的整个过程。产品生命周期则是一款产品从创意概念到研发上市到死亡的过程。用户生命周期不等于产品生命周期。衰退期的产品，也会有新用户下载使用；新上架的产品，也会有用户流失。2、用户生命周期分为：导入期、成长期、成熟期、休眠期、流失期。 导入期：用户获取阶段，将市场中的潜在用户流量转化为自家">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pics0.baidu.com/feed/d788d43f8794a4c225c0f0be161f24d0af6e39b7.jpeg?token=4fb5e6a1b310096d87d05b20e71d71e3&s=A7F3CB3209426E4B06592C4F0300A0F2">
+<meta property="og:image" content="http://pics5.baidu.com/feed/a044ad345982b2b7c44d084f2946f4ea74099b5e.jpeg?token=3ca29138c0e28484c582bff37b489b5d&s=5BAA34639BAB410B5CF531DB0000C0B1">
+<meta property="og:image" content="http://pics3.baidu.com/feed/f603918fa0ec08fab3dade614e05026857fbda0b.jpeg?token=2c5280741058ea295ab414c6edc040a3&s=E1631F740F6045221476C4CB0300C0B8">
+<meta property="og:image" content="http://pics2.baidu.com/feed/a2cc7cd98d1001e9556d9921a0e544e955e797bf.jpeg?token=a3a1a478cf790e95f85974936afa601c&s=9FA42A8ECEE04484351FF4F903009019">
+<meta property="og:image" content="http://pics4.baidu.com/feed/0823dd54564e92584f0f1d748569ee5dcdbf4e65.jpeg?token=3643615d6ca372243d9c12570e636f51&s=94047C321F43414B48D5F9CA000080B3">
+<meta property="og:image" content="http://pics6.baidu.com/feed/9358d109b3de9c82ba122bc47a6abf0f18d84372.jpeg?token=4542319146ecb05ffae0728edb1b56c1&s=89A27D3283DE6DC81C4D00CC0200F0B2">
+<meta property="og:image" content="http://pics0.baidu.com/feed/ca1349540923dd54c6982fd0c7e28cdb9e82488b.jpeg?token=ed53907641a0edb5746175df8344a8fd&s=5C843D72332A652814419C450200E070">
+<meta property="og:image" content="http://pics0.baidu.com/feed/2cf5e0fe9925bc31021cd2264934b2b4ca13703f.jpeg?token=02251b5bee81257d1a81d619f792bf5e&s=7B8C386221CBD1474C7511CA000080B1">
+<meta property="article:published_time" content="2020-06-03T07:07:45.862Z">
+<meta property="article:modified_time" content="2020-06-03T07:07:45.862Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pics0.baidu.com/feed/d788d43f8794a4c225c0f0be161f24d0af6e39b7.jpeg?token=4fb5e6a1b310096d87d05b20e71d71e3&s=A7F3CB3209426E4B06592C4F0300A0F2">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/03/%E7%94%A8%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>用户生命周期 | Winnie's big blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Winnie's big blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/03/%E7%94%A8%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Winnie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winnie's big blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用户生命周期
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-03 15:07:45" itemprop="dateCreated datePublished" datetime="2020-06-03T15:07:45+08:00">2020-06-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>用户生命周期介绍</strong></p>
+<p><strong>1、用户的生命周期和产品生命周期是不同的两个概念。</strong></p>
+<p>用户生命周期就是用户从开始接触产品到离开产品的整个过程。产品生命周期则是一款产品从创意概念到研发上市到死亡的过程。用户生命周期不等于产品生命周期。衰退期的产品，也会有新用户下载使用；新上架的产品，也会有用户流失。<strong>2、用户生命周期分为：导入期、成长期、成熟期、休眠期、流失期。</strong></p>
+<p>导入期：用户获取阶段，将市场中的潜在用户流量转化为自家用户。</p>
+<p>成长期：注册登录并激活，已经开始体验产品的相关服务或功能，体验过Aha时刻。</p>
+<p>成熟期：深入使用产品的功能或服务，贡献较多的活跃时长、广告营收或付费等。</p>
+<p>休眠期：一段时间内未产生价值行为的成熟用户。</p>
+<p>流失期：超过一段时间未登录和访问的用户。</p>
+<p><img src="http://pics0.baidu.com/feed/d788d43f8794a4c225c0f0be161f24d0af6e39b7.jpeg?token=4fb5e6a1b310096d87d05b20e71d71e3&s=A7F3CB3209426E4B06592C4F0300A0F2" alt="img"></p>
+<p><strong>3、为什么要重视用户生命周期</strong></p>
+<p>做产品的目的是为了利益。而如何让利益最大化，请看下面这个公式。</p>
+<p><strong>产品价值=用户量*用户单体价值</strong></p>
+<p>因此，要想让产品价值最大化，要么用户不断增长，要么就是提升用户的单体价值。而驱动用户单体价值的方向只有有两个：要么提升单体用户价值，要么延长用户生命周期。在增量越来越贵，存量越来越重要的今天，你说需不需要重视用户生命周期？</p>
+<p><strong>4、用户生命周期管理的两个问题点</strong></p>
+<p><strong>1）不是所有用户都会经历完整的用户生命周期</strong></p>
+<p>并非所有用户都是按照导入期-成长期-成熟期-休眠期-流失期的步骤，走完一个完整的生命周期。很多用户可能在导入期或者成长期之后，因为各种原因就直接流失了。</p>
+<p>那么依托数据支持，找到这种共性原因，其实就是用户生命周期管理的一个重点工作（这里后面会详细讲到）。</p>
+<p><strong>2）不是所有产品都需要管理用户生命周期</strong></p>
+<p>初创期的产品，因为用户量级不够，可以暂时不用做用户生命周期管理。</p>
+<p>卖方市场的垄断型产品可以不用做用户生命周期管理（只此一家，别无分号，你想流失都没地方去）。比如12306、各类银行的网银APP等等。</p>
+<p><strong>如何建立用户生命周期管理模型</strong></p>
+<p><strong>1、结合业务与数据，定义用户各阶段特征</strong></p>
+<p>上面我们说到了，用户生命周期分为5个阶段，对应的就是不同阶段用户的产品参与互动程度。那么如何做出一个合理且具备可执行力的分类规范呢？这就需要结合业务能力与数据分析能力了。</p>
+<p><strong>A、导入期</strong></p>
+<p>下载注册激活的用户。</p>
+<p>导入期没有什么好说的，所有的新用户都是属于导入期的。</p>
+<p><strong>B、成长期</strong></p>
+<p>不同产品的成长期定义，都是不同的。</p>
+<p>电商类产品、工具类产品、直播类产品等，都是有区别。而同属于电商类或者直播类的产品，不同的公司，不同的运营体系也会有不同的定义方式。</p>
+<p>比如电商类的产品，习惯把完成首次下单后的用户定义为成长期用户。</p>
+<p>比如免费工具类的产品，习惯把用户完整使用过一次产品功能定义为成长期用户。</p>
+<p>比如直播类的产品，习惯把用户首次充值或者观看直播累计超过50分钟的未付费用户定义为成长期用户。</p>
+<p>成长期的阶段信号，一般是首次完成付费或者使用路径完整或者使用时长超过阈值等。用户发现了产品的价值，并有了一定的认可度。为了让用户进入成长期，各种运营方法开始出现。</p>
+<p>比如电商类的产品，赠送大红包、首单折扣，甚至于拼多多给新用户几乎免单的优惠等，都是为了促进用户的首单消费。</p>
+<p>再比如工具类产品，通过用户指引，一步一步的引导用户使用产品，快速走一遍完整路径，也是为了加快用户进入成长期。</p>
+<p><strong>C、成熟期</strong></p>
+<p>成熟期的阶段信号基本上都是重复购买，或者频繁登录，经常使用等。</p>
+<p>成熟期阶段的用户，是产品最重要的用户，也是能够带来最多收益的用户。用户运营的工作重点，也是在这个阶段的用户。RFM模型、金字塔模型等等，诸多的用户分层方法手段，都是针对这个阶段的用户来的（这个后面也会详细讲到）。</p>
+<p><strong>D、休眠期</strong></p>
+<p>关于休眠期的定义，和成长期类似。不同行业，不同企业有不同的定义。</p>
+<p>有些企业把一段时间不登录定义为休眠（时间周期比流失短一些）。电商公司则习惯性的把一段时间内未下单定义为进入休眠期。直播产品则一般把一段时间内为充值且在线时间下降到一个范围内称之为进入休眠期。这个阶段的用户价值开始走下坡，无论是充值金额、购买次数、在线时长等关键指标都在下滑。</p>
+<p><strong>E、流失期</strong></p>
+<p>XX天未登录的用户，视为流失。具体是多少天，则根据行业、过往数据等来进行定义。</p>
+<p><strong>2、用户归类</strong></p>
+<p>这个很好理解，就是把现有用户根据确定分类标准进行分类。</p>
+<p><strong>3、用户价值提升策略</strong></p>
+<p><strong>A、梳理行为路径</strong></p>
+<p>用户进入产品后，会有非常多的行为路径。A-B-C-D，或者A-C-D-B，又或者A-D-C-B等等。每个用户根据自己的操作习惯，使用目的等，会存在非常多的行为路径。</p>
+<p>但是作为运营，我们不希望新用户体验太多的行为路径，尤其是偏离主线的路径。因为越多的分支，就存在越多流失的可能。</p>
+<p>因此，我们需要定义一条最优行为路径。</p>
+<p>通过优化最优行为路径，让用户第一时间感受到产品的Aha时刻。</p>
+<p>通过优化最优行为路径，减少用户在其他路径上的流失。</p>
+<p>通过优化最优行为路径，加快用户进入成熟期。</p>
+<p>举个例子。这是我司直播产品的简易产品路径。</p>
+<p><img src="http://pics5.baidu.com/feed/a044ad345982b2b7c44d084f2946f4ea74099b5e.jpeg?token=3ca29138c0e28484c582bff37b489b5d&s=5BAA34639BAB410B5CF531DB0000C0B1" alt="img"></p>
+<p>那么其中最优路径是怎样的呢？通过对业务的熟悉和对数据的分析，直播产品的最优行为路径：</p>
+<p>登录APP-主播选择页面-进入直播间观看-充值-送礼物-关注。</p>
+<p><strong>B、对路径进行优化</strong></p>
+<p>根据数据，可视化成一个桑基图。</p>
+<p><img src="http://pics3.baidu.com/feed/f603918fa0ec08fab3dade614e05026857fbda0b.jpeg?token=2c5280741058ea295ab414c6edc040a3&s=E1631F740F6045221476C4CB0300C0B8" alt="img"></p>
+<p>备注：因为涉及业务原因，本文所有数据均为脱敏后数据。本桑基图为部分图片。均不代表实际业务情况。</p>
+<p>通过桑基图，可以直观的看到流量去向。</p>
+<p>这个时候，运营要做的就是对这些非主要行为路径上的流量进行分析。通过运营手段、产品优化等手段，来让非主要行为路径上的流量回归主要行为路径。</p>
+<p>比如说，启动APP后，有大部分流量流向了顶部广告，然后从顶部广告直接流失了。那么运营就需要关注一下，是不是广告位置太醒目，能否换个地方？广告内容是否没营养，因此无法留住人？</p>
+<p>我之前有个项目，为了减少流失，直接取消了用户选择进房。当用户登录APP后，直接进房，无需选择。效果不错，大大降低了这一部分路径上的流量流失。（当然了，T哥我直接把路径给砍了。）</p>
+<p>为了优化路径，运营们各种招式纷纷上阵。</p>
+<p>强制弹窗，把最重要的内容直接弹到用户眼前，让你不关注都不行。</p>
+<p><img src="http://pics2.baidu.com/feed/a2cc7cd98d1001e9556d9921a0e544e955e797bf.jpeg?token=a3a1a478cf790e95f85974936afa601c&s=9FA42A8ECEE04484351FF4F903009019" alt="img"></p>
+<p>新手任务，通过一步一步引导、完成、奖励，让用户忽视其他路径，最快完成最优路径。</p>
+<p><img src="http://pics4.baidu.com/feed/0823dd54564e92584f0f1d748569ee5dcdbf4e65.jpeg?token=3643615d6ca372243d9c12570e636f51&s=94047C321F43414B48D5F9CA000080B3" alt="img"></p>
+<p>这个地方，可以运营的点很多。但是道理都是一样的，通过运营手段让最多用户最快时间最短距离走完最优路径。</p>
+<p><strong>C、分层运营，提升用户单体价值</strong></p>
+<p>如果把用户价值比作一个长方形，那么用户生命周期的长度和用户单体价值就是这个长方形的长和宽。</p>
+<p>所以，提升用户单体价值也是这其中最要的一步。</p>
+<p>这里给大家列举一些常用的分成方法。大家可以按方抓药，根据自身产品的特性选择合适的方法。</p>
+<p><strong>-四象限法</strong></p>
+<p>用四象限原理，对用户进行分层。通过7日活跃次数和平均停留时长两个指标维度，把用户分层为四类。</p>
+<p>重度依赖用户：7日活跃次数≥X；平均停留时长≥Y</p>
+<p>重度活跃用户：7日活跃次数≥X；平均停留时长&lt;Y</p>
+<p>一般依赖用户：7日活跃次数&lt;X；平均停留时长≥Y</p>
+<p>一般活跃用户：7日活跃次数&lt;X；平均停留时长&lt;Y</p>
+<p>这个方法，适合免费工具类、内容消费类等产品。而在具体运营上，适合采用积分、等级等体系，激励内容消费用户持续活跃，贡献流量价值。</p>
+<p><img src="http://pics6.baidu.com/feed/9358d109b3de9c82ba122bc47a6abf0f18d84372.jpeg?token=4542319146ecb05ffae0728edb1b56c1&s=89A27D3283DE6DC81C4D00CC0200F0B2" alt="img"></p>
+<p><strong>-金字塔模型</strong></p>
+<p>针对内容生产型用户，则可以采用金字塔模型进一步分层。例如：直播平台的主播、视频网站的内容制作上传者等。</p>
+<p>巨星：官方认证巨星主播</p>
+<p>明星：官方认证明星主播</p>
+<p>达人：官方认证的达人主播</p>
+<p>潜力星秀：X&lt;直播时长&lt;N；Y&lt;主播收益&lt;M</p>
+<p>新星：0&lt;直播时长&lt;X；0&lt;主播收益&lt;Y</p>
+<p>通过官方认证的荣誉体系，激励内容生产者持续产出。当然根据产品的不同，荣誉体系对应的收入分发也会有不同。通过金钱+荣誉的双重刺激，来激励内容生产者的高效持续产出。</p>
+<p><img src="http://pics0.baidu.com/feed/ca1349540923dd54c6982fd0c7e28cdb9e82488b.jpeg?token=ed53907641a0edb5746175df8344a8fd&s=5C843D72332A652814419C450200E070" alt="img"></p>
+<p><strong>-RFM模型</strong></p>
+<p>RFM模型不详细介绍了，相关内容的文章已经有了非常多。</p>
+<p>通过R（距离上一次付费时间）、F（近30天付费次数）、M（近30天平均客单价）三个维度的数据，把用户分为八类，分别是：</p>
+<p>重要价值用户重要发展用户重要保持用户重要挽留用户一般价值用户一般发展用户一般保持用户一般挽留用户<strong>流失预警</strong></p>
+<p><strong>1、定义流失用户</strong></p>
+<p>XX天内未登录的用户视为流失。这个XX天如何定义？我有两点想法。</p>
+<p>一方面是根据业务情况等来定义，习惯性的是30/60/90天。</p>
+<p>另一方面可以根据召回的效果来定义，比如说10天20天30天的召回，效果肯定是阶梯下降的。那么是否会存在一个点，过了这个点后效果大幅度下降？那么这个点，就是定义流失用户的关键点。</p>
+<p><img src="http://pics0.baidu.com/feed/2cf5e0fe9925bc31021cd2264934b2b4ca13703f.jpeg?token=02251b5bee81257d1a81d619f792bf5e&s=7B8C386221CBD1474C7511CA000080B1" alt="img"></p>
+<p><strong>2、制定召回策略</strong></p>
+<p>假设公司把30天未登录视为流失，那么召回并不是从第30天才开始的。</p>
+<p>3天、7天、15天等关键性的时间段就需要开始召回了。</p>
+<p>比如每周一，拉取了过去7日内没有打开产品的用户名单，这些就是7日流失用户。运营通过PUSH或者短信进行召回。</p>
+<p>这样的工作每周、每月都在重复进行。因为用户的流失是无声无息的，虽然我们定义30天为流失，但其实用户并不是30天这个时间截点突然流失。因此，如果可以在第一时间就对用户进行召回，那么效果肯定是最好的。</p>
+<p>这里我要强调一下，3、7、15、30等数据，是我负责的产品的时间选择。具体如何确定时间，大家又如何确定自己产品的时间？</p>
+<p>唯有不断通过测试，根据数据反馈来调整。熟悉自己的业务，结合数据反馈来优化，做好这两点，就能确定出最适合自己的时间截点。</p>
+<p><strong>3、召回工具</strong></p>
+<p>这个就太简单了，我这里不过多阐述，列举一下各种方法。</p>
+<p>站内信召回、PUSH推送、邮件召回、短信召回、电话回访等。</p>
+<p>每一个召回工具都有利有弊，选择适合自己的即可，多种方式搭配，效果更佳。</p>
+<p>目前主流的是PUSH推送+短信的搭配，但是如果公司业务是涉及到对外的，邮件也是一个不错的选择。</p>
+<p><strong>总结</strong></p>
+<p><strong>运营针对用户生命周期进行管理，归根结底就是为了让用户价值最大化。</strong>处于不同生命周期内的用户，用户价值是不同的，因此需要运营来针对处理，精细化运营。</p>
+<p>运营手段多种多样，其实结合本文，你会发现很多之前每天都在做的运营工作，你可能终于知道为什么做；如何把几个运营动作结合起来，形成一套组合拳等等。</p>
+<p>这其实就是运营知识框架体系的搭建与丰富。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/25/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%88/" rel="prev" title="产品文案">
+      <i class="fa fa-chevron-left"></i> 产品文案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/11/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE/" rel="next" title="用户画像标签">
+      用户画像标签 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Winnie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
