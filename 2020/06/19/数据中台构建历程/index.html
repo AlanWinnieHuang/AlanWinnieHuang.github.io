@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据中台构建历程一、构建背景随着公司业务线逐渐增加，企业正在以爆发式的数据增长，海量的数据在平台流通，然而并没有一个统一的平台进行数据资源的分析挖掘，价值的盘活，数据的变现。所以在我们企业的战略思想上，必须认知到数据资源存在的价值，将数据资源转变成数据资产，加以整合应用，实现数据资产的业务化，可变现化，才能具备市场上的有力竞争优势。 在这样的一种环境下，构建一个数据中台是非常有必要性的。将平台有价">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据中台构建历程">
+<meta property="og:url" content="http://yoursite.com/2020/06/19/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%9E%84%E5%BB%BA%E5%8E%86%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Winnie&#39;s big blog">
+<meta property="og:description" content="数据中台构建历程一、构建背景随着公司业务线逐渐增加，企业正在以爆发式的数据增长，海量的数据在平台流通，然而并没有一个统一的平台进行数据资源的分析挖掘，价值的盘活，数据的变现。所以在我们企业的战略思想上，必须认知到数据资源存在的价值，将数据资源转变成数据资产，加以整合应用，实现数据资产的业务化，可变现化，才能具备市场上的有力竞争优势。 在这样的一种环境下，构建一个数据中台是非常有必要性的。将平台有价">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/Users/winnie/Desktop/%E6%88%AA%E5%B1%8F2020-06-24%E4%B8%8A%E5%8D%8810.15.45.png">
+<meta property="og:image" content="http://yoursite.com/Users/winnie/Desktop/%E6%88%AA%E5%B1%8F2020-06-24%E4%B8%8A%E5%8D%8810.53.20.png">
+<meta property="article:published_time" content="2020-06-19T12:12:30.789Z">
+<meta property="article:modified_time" content="2020-07-13T05:37:49.319Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Users/winnie/Desktop/%E6%88%AA%E5%B1%8F2020-06-24%E4%B8%8A%E5%8D%8810.15.45.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/19/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%9E%84%E5%BB%BA%E5%8E%86%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据中台构建历程 | Winnie's big blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Winnie's big blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%9E%84%E5%BB%BA%E5%8E%86%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Winnie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winnie's big blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据中台构建历程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-19 20:12:30" itemprop="dateCreated datePublished" datetime="2020-06-19T20:12:30+08:00">2020-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-13 13:37:49" itemprop="dateModified" datetime="2020-07-13T13:37:49+08:00">2020-07-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="数据中台构建历程"><a href="#数据中台构建历程" class="headerlink" title="数据中台构建历程"></a>数据中台构建历程</h2><h4 id="一、构建背景"><a href="#一、构建背景" class="headerlink" title="一、构建背景"></a>一、构建背景</h4><p>随着公司业务线逐渐增加，企业正在以爆发式的数据增长，海量的数据在平台流通，然而并没有一个统一的平台进行数据资源的分析挖掘，价值的盘活，数据的变现。所以在我们企业的战略思想上，必须认知到数据资源存在的价值，将数据资源转变成数据资产，加以整合应用，实现数据资产的业务化，可变现化，才能具备市场上的有力竞争优势。</p>
+<p>在这样的一种环境下，构建一个数据中台是非常有必要性的。将平台有价值数据，经过数据处理中心统一口径、指标的清洗，去重，验证等行为，沉淀到数据中台。再将中台价值数据通过数据服务反馈到业务应用平台。将整个公司体系下的业务数据化，数据业务化，更高效的反馈到运营层，调整运营方案。更快速的抵达战略层，调整战略方向。可以更高效的知道，每天的用户都是什么样的用户，能更具有针对性的对平台用户进行引导、唤醒、召回。更有效的提高用户留存和活跃。为平台带来不可估量的价值。并且提供的数据服务可以在各个业务线进行复用，大大降低了平台的技术成本。</p>
+<h4 id="二、数据中台价值"><a href="#二、数据中台价值" class="headerlink" title="二、数据中台价值"></a>二、数据中台价值</h4><h5 id="1）现状："><a href="#1）现状：" class="headerlink" title="1）现状："></a>1）现状：</h5><p>在整个数据的处理过程中，一共有4个阶段：</p>
+<ul>
+<li>数据库阶段，主要是OLTP（联机事务处理）的需求；</li>
+<li>数据仓库阶段，OLAP（联机分析处理）成为主要需求；</li>
+<li>数据平台阶段，主要解决BI和报表需求的技术问题；</li>
+<li>数据中台阶段，通过系统来对接OLTP（事务处理）和OLAP（报表分析）的需求，强调数据业务化的能力。</li>
+</ul>
+<p>公司正出于第3阶段，coral已经可以简单解决Bi和报表需求。距离数据中台阶段其实已经不远了。基本的指标、口径已经做到了统一，为数据中台化奠定了非常好的基础。</p>
+<p>但是目前数仓仅仅提供了数据处理的功能，但是不具备数据服务、数据管理等应用服务。并且在数据处理方面完全数据人工清洗，人工组合，效率非常低下。</p>
+<p>通过数据中台的数据服务功能，可实时观测线上运营数据，可自定义用户人群做精准推送等应用服务，大大提高公司数据层面的工作效率，并快速定位活动运营成绩，减少由于信息的不及时性导致公司的损失</p>
+<h4 id="三、中台目标"><a href="#三、中台目标" class="headerlink" title="三、中台目标"></a>三、中台目标</h4><h5 id="什么是数据中台"><a href="#什么是数据中台" class="headerlink" title="什么是数据中台"></a>什么是数据中台</h5><p><img src="/Users/winnie/Desktop/%E6%88%AA%E5%B1%8F2020-06-24%E4%B8%8A%E5%8D%8810.15.45.png" alt="截屏2020-06-24上午10.15.45"></p>
+<h5 id="痛点："><a href="#痛点：" class="headerlink" title="痛点："></a>痛点：</h5><ul>
+<li>业务痛点：公司发展迅速，层出不穷的业务活动模块快速迭代，导致了对数据的分析要求非常的频繁。但是由于没有标准化的数据管理和资产目录。导致对每个业务活动都需要技术经过一个漫长的流程去满足一个数据需求。效率很低下，对数据的分析时间也拉的非常长，做不到及时的跟进。</li>
+<li>重复造轮子：对于目前来说，没有统一口径指标的数据平台，所以所有的大业务体系都无法进行数据的复用，导致开发量大大的增加，重复的做了很多冗余的工作，烟囱式开发形成的数据孤岛与重复计算</li>
+<li>可信度：各个业务线指标口径不一致导致数据可信度下降</li>
+<li>平台数据完全无法共享，导致无法及时在各个业务线精准化运营</li>
+<li>各个业务线数据口径不一致，指标不同，导致跨部门整合的能力非常低下</li>
+</ul>
+<h5 id="战略目标与价值："><a href="#战略目标与价值：" class="headerlink" title="战略目标与价值："></a>战略目标与价值：</h5><p>把层层数据直到最上层的指标梳理清楚，提升数据质量，从而提升运营效率，为前台业务提供标准化的数据服务，既解决指标不一致的问题，也规避数据泄露的风险，降低数据应用的门槛，提高业务流转效率，同时还能降低数据存储和数据开发人员的成本，提高运营人员观测数据的实时性。快速认知运营效果，降低运营成本</p>
+<h5 id="阶段目标"><a href="#阶段目标" class="headerlink" title="阶段目标"></a>阶段目标</h5><p>第一阶段：数据标签化。</p>
+<ul>
+<li>将用户基本信息数据、用户行为数据、业务行为数据转化成以用户为主键的指标目录。（第一阶段主要目标）</li>
+<li>埋点管理：将埋点元数据托管到数据中台，形成埋点数据目录</li>
+</ul>
+<p>第二阶段：完成数据服务化，将数据中台沉淀的数据通过Api的方式，为其他应用层提供数据服务。比如：用户人群</p>
+<ul>
+<li>Api创建</li>
+<li>Api提交审核</li>
+<li>Api发布</li>
+<li>Api申请</li>
+</ul>
+<p>第三阶段：数据可视化，通过自定义数据指标筛选，输出可视化数据报表，为企业提供高效率的数据分析依据。</p>
+<p>第四阶段：数据分析预警，通过平台的数据，可提供人员的流失预警，风险预警等能力，将评估从事后的模式，直接改变成事前的模式，减少平台的流失率。</p>
+<h4 id="四、目标用户"><a href="#四、目标用户" class="headerlink" title="四、目标用户"></a>四、目标用户</h4><ul>
+<li>运营团队  ：根据内置的指标，进行条件组合，筛选出符合条件的人群，有提供下载功能和直接绑定推送服务功能</li>
+<li>数仓团队 ： 指标统一管理，可以在中台中，进行数据指标的统一管理</li>
+<li>产品团队 ： 分析目前业务数据，找出可优化的点，进行战略目标的调整</li>
+</ul>
+<h4 id="五、名次定义"><a href="#五、名次定义" class="headerlink" title="五、名次定义"></a>五、名次定义</h4><ul>
+<li>指标：标签的最小构成元素   比如：年龄</li>
+<li>标签：一个或多个 指标 + 值的条件组合</li>
+<li>用户画像：同一用户所有标签的集合</li>
+</ul>
+<h4 id="六、功能结构图"><a href="#六、功能结构图" class="headerlink" title="六、功能结构图"></a>六、功能结构图</h4><p><img src="/Users/winnie/Desktop/%E6%88%AA%E5%B1%8F2020-06-24%E4%B8%8A%E5%8D%8810.53.20.png" alt="截屏2020-06-24上午10.53.20"></p>
+<p>线做自己平台的数据沉淀。</p>
+<p>消息中台的数据，只做数据前期的沉淀，对后面</p>
+<p>数量限制</p>
+<p>消息中台的数据沉淀</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/12/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0/" rel="prev" title="数据中台">
+      <i class="fa fa-chevron-left"></i> 数据中台
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/10/%E6%8A%93%E4%BD%8F%E7%94%A8%E6%88%B7%E5%86%99%E6%96%87%E6%A1%88/" rel="next" title="抓住用户写文案">
+      抓住用户写文案 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据中台构建历程"><span class="nav-number">1.</span> <span class="nav-text">数据中台构建历程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、构建背景"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、构建背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、数据中台价值"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、数据中台价值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）现状："><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1）现状：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、中台目标"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、中台目标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是数据中台"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">什么是数据中台</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#痛点："><span class="nav-number">1.0.3.2.</span> <span class="nav-text">痛点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#战略目标与价值："><span class="nav-number">1.0.3.3.</span> <span class="nav-text">战略目标与价值：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#阶段目标"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">阶段目标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、目标用户"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、目标用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、名次定义"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、名次定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、功能结构图"><span class="nav-number">1.0.6.</span> <span class="nav-text">六、功能结构图</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Winnie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

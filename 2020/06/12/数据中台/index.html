@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.数据中台是什么 数据中台需求的出现，是企业数字化转型的一个标志性的转折，数据中台成为热点，标志着，“在企业信息化或者数字化的历史上，数据从来没有距离业务这么近，数字化转型正从流程优先走向数据优先”。要想从根本上理解数据中台是什么，要认识到数据和软件的关系。 信息化和数字化的本质区别是： “信息化是用软件工程技术局部支撑和改良业务，数字化是用数字化技术重塑和转型业务本身”，而数据则是构成数字化业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据中台">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0/index.html">
+<meta property="og:site_name" content="Winnie&#39;s big blog">
+<meta property="og:description" content="1.数据中台是什么 数据中台需求的出现，是企业数字化转型的一个标志性的转折，数据中台成为热点，标志着，“在企业信息化或者数字化的历史上，数据从来没有距离业务这么近，数字化转型正从流程优先走向数据优先”。要想从根本上理解数据中台是什么，要认识到数据和软件的关系。 信息化和数字化的本质区别是： “信息化是用软件工程技术局部支撑和改良业务，数字化是用数字化技术重塑和转型业务本身”，而数据则是构成数字化业">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410212346995.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019041021383238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410212454547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410212557944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410212741977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019041021275826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410212926411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410212852460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190410213000560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-06-12T06:51:16.844Z">
+<meta property="article:modified_time" content="2020-06-16T12:19:08.028Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190410212346995.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/12/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据中台 | Winnie's big blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Winnie's big blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Winnie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winnie's big blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据中台
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 14:51:16" itemprop="dateCreated datePublished" datetime="2020-06-12T14:51:16+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-16 20:19:08" itemprop="dateModified" datetime="2020-06-16T20:19:08+08:00">2020-06-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>1.数据中台是什么</p>
+<p>数据中台需求的出现，是企业数字化转型的一个标志性的转折，数据中台成为热点，标志着，“在企业信息化或者数字化的历史上，数据从来没有距离业务这么近，数字化转型正从流程优先走向数据优先”。要想从根本上理解数据中台是什么，要认识到数据和软件的关系。</p>
+<p>信息化和数字化的本质区别是：</p>
+<p>“信息化是用软件工程技术局部支撑和改良业务，数字化是用数字化技术重塑和转型业务本身”，而数据则是构成数字化业务世界的原子材料。</p>
+<p>数据从应用诞生的那一天开始就存在，但是，数据并不是第一天就被存储和利用的，应用和数据的发展是不同步的，数据的地位是不断演进，越来越重要的，经历了以下五个阶段：<br><img src="https://img-blog.csdnimg.cn/20190410212346995.png" alt="在这里插入图片描述"><br>阶段1：数据没有被存储</p>
+<p>早期的应用，是为了解决某一个单点的问题，比如计算器，计算过程的数据是不被存储的，但是计算的过程中，数据是客观存在的。这个阶段，数据是应用的过程产物，产生即丢弃，并不被存储。</p>
+<p>阶段2：只有少量结果数据被存储和查询</p>
+<p>当应用的功能丰富后，软件从解决单点问题的工具演进到处理一类业务问题，从而有了多个功能模块。典型的例子是办公自动化系统、进销存系统，这个时候少量的结果数据被存储起来，并且也有了对数据的查询、统计的需求。这个时候，数据是关键业务的记录。</p>
+<p>阶段3：数据仓库出现，数据被大量存储</p>
+<p>接着，企业级管理系统比如ERP、MES、CRM的出现，企业管理层需要跨条线，跨职能了解和掌握整体的经营情况，从而根据这些数据来帮助企业做决策。这个时候商务智能，传统数据仓库系统应运而生的出现了，数据在企业管理中的作用开始显现。但是这个时候的数据距离业务很远，为业务提供支持的速度很慢，往往是先有了业务想法和需求，先有“领导要看什么”，然后在去采集和处理对应的数据做出什么报表给到领导</p>
+<p>阶段4：数据的深入价值开始被挖掘</p>
+<p>传统数据仓库还是基于流程的，原因是数据仓库的需求还是来自于预先的设计，来自于固有流程数据的整合。而这个时候，企业的业务已经有了一定的复杂度，企业管理人员希望从数据当中发现一些隐藏的未知的价值和规律。而这个时候预定义的查询条件，预定义的业务主题已经不能满足这样的需求，所以在数据仓库基础上，产生了数据挖掘的技术，业务从数据中发现市场的规律，洞察客户的兴趣，产生一些人们不知道的信息。这个阶段在市场营销、生产调度等影响因子较多，动态性较大的业务领域，数据的重要性愈加凸显。</p>
+<p>以上四个阶段，基本上都处于“业务数据化”的阶段</p>
+<p>阶段5：业务数据化，数据成为企业核心资产</p>
+<p>到了数字化时代，所有的一切都被数字化的技术所重构，而数据是构成数字化世界的基础。数据如同石油一样，成为新时代的资源，从数据当中挖掘价值，从数据当中去产生创新已经成为了所有企业的共识。这个时候，数据成为了企业的核心资产，所有的业务都被数据化。</p>
+<p>总结一下，我们会发现在信息化时代，数据是流程的副产品，流程是预先设计好的，然后在设计好的流程中产生了数据；</p>
+<p>在数字化时代，业务流程应用软件（业务流程的显形载体）会随着市场的变化快速而不断动态迭代甚至消亡，而数据成为了物理世界映射到数字化世界的原子，数据思维（”Data First” ）成为战略核心之一。</p>
+<p>“数据是构建物理世界对等的数字化世界的原子”，数据中蕴含着业务的本质，蕴含着创新的源泉，谁能掌握数据的能力谁就能在数字化竞争中拔得头筹。</p>
+<p>最近两年，数据在数字化转型的重要性被提上了前所未有的高度，数据驱动的决策，调度，运营给企业插上了智能的大脑，带来了巨大的业务价值。</p>
+<p>UPS的首席信息官Juan Perez在2017年启动了网络规划工具的试点，利用算法和数据来优化路由，2018年这个项目为UPS节约了三千九百万加仑的能源消耗，缩短了3.64亿公里的路程。现在利用算法，机器学习，深度学习的技术来加工数据，通过数据来驱动企业的运营已经成为了UPS的核心竞争力。</p>
+<p>[<a href="https://erpinnews.com/big-data-case-study-ups-using-analytics-improve-performance" target="_blank" rel="noopener">https://erpinnews.com/big-data-case-study-ups-using-analytics-improve-performance</a></p>
+<p><a href="https://bigdata-madesimple.com/10-big-data-case-studies-big-results-2018/" target="_blank" rel="noopener">https://bigdata-madesimple.com/10-big-data-case-studies-big-results-2018/</a></p>
+<p>]</p>
+<p>招商银行将“数据化”作为金融科技战略的核心举措，通过数据驱动来全方位进行渠道优化和服务升级革命，打造了一批数据和智能驱动的新产品和服务。</p>
+<p>[</p>
+<p><a href="https://www.wdzj.com/hjzs/ptsj/20180724/707374-1.html" target="_blank" rel="noopener">https://www.wdzj.com/hjzs/ptsj/20180724/707374-1.html</a></p>
+<p><a href="http://www.cfc365.com/technology/bigdata/2018-07-25/14785.shtml" target="_blank" rel="noopener">http://www.cfc365.com/technology/bigdata/2018-07-25/14785.shtml</a></p>
+<p>]</p>
+<p>ThoughtWorks在2018年初就提出，数字化转型已经从流程驱动进入数据驱动的时代，数据已经成为了企业的核心生产资料。</p>
+<p>[<a href="https://mp.weixin.qq.com/s/Y2Q_NUKzHWTOyX99kXO5BQ]" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Y2Q_NUKzHWTOyX99kXO5BQ]</a></p>
+<p>2018年10月，阿里云栖大会上提出”数字外场“的概念，而数字外场的核心就是数据，每一个企业都在努力的成为数据驱动的企业，所以构建数据中台之前，企业需要在企业推行数据思维，建立自己的数据战略。</p>
+<p>[<a href="https://www.yidianzixun.com/article/0KBGxr4g]" target="_blank" rel="noopener">https://www.yidianzixun.com/article/0KBGxr4g]</a></p>
+<p>数据本身在企业数字化转型的历程中，成为了最核心，最重要的生产资料，成为了企业重塑业务，自我转型的决定性因子，在这个背景下，企业需要一个源源不断的输出数据服务，数据洞察的能力源泉，数据中台的出现就成了顺理成章的事情。</p>
+<p>在2017年，我们就观察到到数据中台将会成为今年的风口，那个时候我们提的最多的是“精益数据资产创新”（有兴趣的同学可以自行百度搜索“精益数据资产创新”）。</p>
+<p>那么，数据中台到底是什么呢？</p>
+<p>用一句话来简单的介绍，“数据中台是数据服务(Data API)工厂”，数据中台的核心是Data API。<br><img src="https://img-blog.csdnimg.cn/2019041021383238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>Data API是数据中台的核心，它是连接前台和后台的桥梁，通过API的方式提供数据服务，而不是直接把数据库给前台、让前台开发自行使用数据。至于产生DataAPI的过程，怎么样让DataAPI产生得更快，怎么样让DATA API更加清晰，怎么样让DATA API的数据质量更好，这些是要围绕数据中台去构建的能力。</p>
+<p>某多产业现代物流集团，在2017年就通过构建企业级数据中台，为业务人员提供了数据资产创新服务，将数据以API的形式提供给前台，从而将新产品从想法到上线的时间，提高了数倍。</p>
+<p>在金融领域，所有的产品、服务、交易本身就是数据化的。我们看到最复杂的业务领域，电信行业现在的网络建设，网络优化，大部分工作都是在电脑上，利用各种工具软件来处理基站和网络的数据，将网络洞察数据转换成网络扩容需求数据，将扩容需求数据设计成网络架构数据，在讲网络架构数据处理成各种不同设备型号的配置数据，同步的产生财务、物流、服务数据等。整个过程90%的工作量在处理各类数据，最后把结果数据传递到现实世界，安排发货，安装，验收等行为。而现在所提倡的工业4.0，智能制造本身也是将生产过程数据化，在数字化世界里用数据来重构工厂本身，从而利用数字化的强大的计算能力，快速的搜索能力，数据的预测能力来增强和优化业务本身。</p>
+<p>未来企业的业务运营，从操作本质上来讲就是加工和处理数据。数据中台就是企业的数据服务工厂，完成从数据到价值的加工过程。<br><img src="https://img-blog.csdnimg.cn/20190410212454547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>对比与之前的所有的数据相关的应用和系统来讲，</p>
+<p>数据中台对于业务的价值是“加速从数据到价值的过程，提高企业的响应能力“。</p>
+<p>传统的信息化建设过程中，数据对业务的贡献是靠人看报表，从数据中理解和发现了新的思想后，通过传统的沟通方式（开会，新需求）来对业务产生影响和指导的。</p>
+<p>数字化时代，数据中台对于企业的价值，是加速从数据到价值的过程，提高企业的响应力。</p>
+<p>原来从数据报表的产生到改变业务行为是以周为单位去计算的，而数据中台的价值是通过抽象和生产数据服务，更快的影响和改变业务行为本身，这就是有的企业将数据服务直接嵌入到交易系统中，实时通过数据洞察来改变业务流程和应用本身。</p>
+<p>某金融科技企业，构建自己的实时风控数据中台，将原来的报表系统变成实时的智能预警平台，将合规评估从事后的模式，直接改变成事前的模式，就像在业务的高速公路上建设了一个个的风控检查站，检查站通过高速的建模，实时数据分析，能够在不影响业务速度的情况下，实时对来往的车辆做风控评估，如果有的车辆有风险，则实时预警。</p>
+<p>将传统的数据服务，从事后管控的模式提高到事前评估的模式，打造高数据响应力的企业是数据中台对于业务的核心价值。</p>
+<p>数据中台还能够为企业解决数据开发和应用开发不同步的问题。</p>
+<p>我们要接受并认可一个现实问题，那就是，企业的数据开发是跟不上应用的开发速度，更是跟不上业务的变化速度的。这是一个不可调和解决的问题，从市场变化到业务需求，到应用开发到沉淀成数据，这三者的速度是天生不一致的，这样的不一致会带来很多的问题，包括有开发效率的问题，有团队协作的问题，有技术能力的问题。比如，为什么开发一个报表需要十几个人天，并且大部分时间都是花在找数据，对数据，算数据上。为什么同样的一个数据需求，不同的项目就要开发两边，不能共用，不能做到一个数据出口？为什么一般的Java开发人员不能掌握数据处理，ETL的能力？</p>
+<p>数据中台就是要将这些能力都沉淀到一个体系中，变成数据开发的能力，变成可以复用，二次加工的数据服务工厂，加快数据开发和协作的速度。</p>
+<p>我们可以广义上来给数据中台一个企业级的定义：“聚合和治理跨域数据，将数据抽象封装成服务，提供给前台以业务价值的逻辑概念”。</p>
+<p>从T+N到T+0，数据中台将融合OLTP和OLAP，为前台业务提供更快的数据类业务服务</p>
+<p>十几年前，数据处理的流程分成两类，联机交易处理类（OLTP）和联机分析处理类(OLAP)，分别对应两类业务需求：“T+0”和”T+N”，这是因为软件的计算能力有限，生产系统无法容纳历史数据的查询统计功能，否则就会导致海量数据的查询，拖垮生产系统的正常交易。所以不得已一个业务系统分成了两个：交易型系统和分析型系统，前者用来处理最新的交易业务，后者用来对历史的、集成的、多维的数据进行分析，支撑业务。</p>
+<p>我们举一个常见的电商价格策略调整的场景，原来的电商系统的价格是提前设置好的录入到电商系统数据库的，电商系统是OLTP也就是在线交易系统。电商系统对于实时性能要求很高，处理的并发交易量很大，为了提高数据库的处理速度，电商系统只保存一段时间内的交易数据，而把历史数据都归档到数据仓库系统也就是OLAP系统里。电商的运营部门定期会在OLAP系统里挖掘历史数据来分析不同的商品的交易数据和价格的关系，然后决定电商系统的价格是不是需要调整。所以传统电商系统，产品价格的变化需要一个比较长的周期的。到了今天，价格本身受影响的维度越来越多，市场需要电商系统的价格能够实时的根据历史数据进行变化，这样一来，传统的OLTP和OLAP分离的架构就不能够满足业务需求了。</p>
+<p>随着大容量高速存储技术的发展、计算能力的提升、微服务、大数据架构的出现，OLTP和OLAP在逐渐融合：应用系统能够实时的基于多维、多渠道、历史数据的分析来定制化交易流程和和行为。OLTP和OLAP从平行的关系，变成垂直的关系。</p>
+<p>刚才举的电商的例子是互联网时代的典型场景，而对于比较传统的金融保险行业来说，目前也正面临着这样的挑战。很多保险产品的报价需要进行信息搜集，评估，审核，而这个过程就是数据的采集，建模，评估，模拟的过程，过去这样的业务都是”T+N”，就是从接到交易申请到给出结果，需要N天，而现在市场的竞争愈加激烈，更快，更准确的给出报价，所以业务要就能够尽量做到”T+0”，实时响应市场的需求。</p>
+<p>这就意味着要把原来的OLAP的历史数据分析，建模，评估的过程和OLTP系统里的交易数据进行融合分析才能够做到。</p>
+<p>我们观察到，从金融保险到电信制造，原来传统的”T+N”的需求都在朝”T+0”演进，大家都在寻找高响应力，快速反馈的实时分析型数据数据处理架构，将数据从原来传统的经营分析领域演进到直接参与业务交易。</p>
+<p>所以我们认为未来的交易型系统，都会变成分析型交易系统(Analytic Transcation Processing)，具有跨域、全量数据分析的支持能力，用数据分析来支持交易的动态敏捷变化，高速响应市场和用户的需求，而OLTP和OLAP也会在云计算，微服务，大数据等技术支撑下逐渐融合。</p>
+<p>2.数据中台和数据仓库，数据平台的关系是什么？</p>
+<p>下面这张图说明了企业对于数据处理需求的变化和演进：<br><img src="https://img-blog.csdnimg.cn/20190410212557944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>早期，企业的数据是少量的，利用Excel等数据文件处理工具来进行统计和手工分析。</p>
+<p>然后，企业希望能够更快的处理比较多的数据，就有了数据仓库的出现，也希望利用数据来支撑运营和分析。接下来不仅有了结构化数据，还出现了非结构化数据，并且运营对于数据的需求越来越多，数据量也越来越大，这就出现了大数据平台，去处理各种不同格式，不同领域的数据，这个过程都是业务数据化的过程。</p>
+<p>到数字化的今天，企业不仅希望事后的运营能够靠数据支撑，更希望构建数据驱动的业务本身，所以，企业需要将这些数据变成一个个业务服务应用到业务本身，参与到业务流程，业务应用的过程中，去改变和驱动业务行为，这也就是”数据业务化“，我把”数据业务化“理解成是”数据业务服务化“的简称。</p>
+<p>这个过程，就能很清晰的解答数据中台和数据仓库，数据平台的关系。</p>
+<p>第一，他们不是一个维度的东西，数据仓库和数据平台是提供数据的系统，而数据中台是提供业务服务的系统，数据中台是能够直接为业务提供数据服务的。但是数据中台是需要构建在数据之上的，所以，数据中台是可以构建在数据仓库、数据平台之上的。</p>
+<p>第二、数据中台能够以提供数据服务的方式直接驱动和改变业务行为本身，而不需要人的介入，数据中台距离业务更近，为业务产生价值的速度更快。</p>
+<p>一句话来总结，数据仓库，数据平台提供的是数据本身，而数据中台提供的是有直接业务价值的数据服务,数据中台距离业务更近。</p>
+<p>3.数据中台建设的最大的挑战是什么</p>
+<p>数据中台建设的最大挑战，是如何找到有价值的业务场景。</p>
+<p>数据中台是一个能力平台，是将企业的数据能力封装到一个平台中，快速提供给业务前台使用的工作。那么企业需要什么样的数据能力，哪些业务需要这些能力，这些数据能力之间的关系是什么？这是一个体系化的工作，是需要进行整体规划和顶层设计的。</p>
+<p>数据中台从出生那一天起就承担着为业务提供更快的数据服务的使命，所以它是和业务价值紧密绑定的，不能提供业务价值的数据服务就是一种浪费。所以如何能够找到，识别出有价值的业务场景是数据中台建设的最大，也是最紧迫的挑战。但是这里就有一个矛盾，业务场景是不断被挖掘和演进的，是快速变化的，而作为能力平台是要支撑全场景的，是要相对稳定的，如何平衡这两者之间的关系呢？</p>
+<p>我们总结了数据中台建设的三大策略：围绕业务价值，演进式架构，要有战略耐心。</p>
+<p>业务价值策略：</p>
+<p>数据中台建设应该以”业务价值为纲，生于业务场景，高于业务场景，始于业务场景。”</p>
+<p>数据中台的建设需求，要围绕业务价值产生。所以所有的功能设计要有对应的业务场景需求为根源，但是数据服务是要抽象， 建模，复用的，所以数据中台在业务场景的基础上要高于业务场景，完成总体的架构设计。</p>
+<p>最终建设的时候，我们不建议那种传统的分层的方式，而是在总的架构设计为目标，要从某一个业务场景出发建设，从业务价值，平台能力和数据治理三个方面同步建设。</p>
+<p>演进式架构策略：</p>
+<p>数据中台的建设应该”快规划，重场景，轻标准“。</p>
+<p>我们所说的规划，不是那种传统意义上的很重，很细致的流程层面的IT规划，而是比较快，比较轻的，围绕业务价值的场景探索式的规划。要轻标准，不要试图去做一个放之四海皆准的企业级数据中台标准，并且定制的很细致，要充分理解市场的动态性，标准一定要轻量，越重实施起来就是枷锁，很难落地。</p>
+<p>战略耐心策略：</p>
+<p>投资方和建设方都要有战略耐心。</p>
+<p>投资方要清晰的认识到数据中台是一个赋能平台，是一个体系化的工作，融合了技术、组织、能力、机制等多个因素，不是一蹴而就的，所以要有一定的耐心给到数据中台的价值露出。</p>
+<p>建设方也要清晰地认识到数据中台是一个复杂工程，是一个演进迭代式的建设工程，是不能毕其功于一役的，要有策略，有步骤的去建设，不要试图做一个大而全，大一统的平台。要服务于业务，高于业务，要深入到业务场景当中去才能获得业务的支持，获得持续的生命力。</p>
+<p>在以上三个策略的基础上，我们在过去的实践中，设计和总结了一套精益数据探索方法(LDD)，通过四个阶段来产出数据中台的建设路线。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190410212741977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>5.数据中台里的数据质量应该如何保障？</p>
+<p>过去这么多年的经验教训告诉我们，数据质量的问题是不可能百分之百解决掉的，因为业务变化的速度快于数据变化的速度，这是一个客观存在的而且短期内不可能改变的事实。我们最应该关心的应该是数据如何能够给业务产生价值，即使只有50%的数据准确度，在治理数据质量的同时，依然要找到这些数据可以为业务产生价值的方法和场景。</p>
+<p>这个问题应该改成，如何治理好现有的数据为业务产生价值。</p>
+<p>数据治理是要服务于业务场景的，而传统的数据治理方法，更多的将数据和业务独立了出来，最后数据治理项目的成果基本上可以归纳为创造了”三个一“工程：</p>
+<p>一堆新岗位：传统的数据治理项目一般会产生一堆新职位，比如主数据管理员，物料管理员，数据治理委员会等。</p>
+<p>一摞新流程：一批新的流程和标准会发布出来，告诉所有的业务项目组，应该遵循这个流程来管理数据。</p>
+<p>一批新系统：会上线一批数据管理系统，将流程和规则固化到系统中。</p>
+<p>但是，很少有数据治理项目能根本上解决数据质量的问题，并且有些项目导致业务的速度变慢了，最后都流于形式和标准。</p>
+<p>这是因为传统的数据治理都是管控式治理，而不是服务式治理。他们的目标是把数据标准定出来，然后让业务服从于这个数据标准，却忽视了，数据标准是为了业务服务的。</p>
+<p>所以，在精益数据创新体系中，我们提倡和实践新的治理方法：精益数据治理（Lean Data Governance)：服务式治理，重场景轻标准，元数据驱动</p>
+<p><img src="https://img-blog.csdnimg.cn/2019041021275826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>服务式原则：</p>
+<p>我们实践服务式的治理，轻管控，以解决业务问题为目标，而不以数据质量为唯一目标</p>
+<p>场景核心原则：</p>
+<p>数据标准越轻越好，强调与业务场景的融合，能够服务好业务场景，产生业务价值的数据标准就是好标准</p>
+<p>元数据驱动原则：</p>
+<p>原来的数据治理很多都是事前进行管控，让业务服从于数据管理，比如主数据的管理，需要有事前审批。而我们现在更多的在实践利用元数据驱动的数据管理的方式，将审批流程弱化，通过自动化数据技术，让业务无感，从事前管控变成事后归因。不影响业务交易的速度，将复杂的事情坐在后端。</p>
+<p>6.数据中台的典型架构是怎样的？</p>
+<p>数据中台是直接服务于业务系统的数据服务工厂，狭义上讲，数据中台就是可复用的数据API。</p>
+<p>站在企业架构的角度，从广义上来讲，数据中台(包含数据平台，数据仓库）应该提供的服务如下图所示：<br><img src="https://img-blog.csdnimg.cn/20190410212926411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>1.数据资产的规划和治理</p>
+<p>做中台之前，首先需要知道业务价值是什么，从业务角度去思考企业的数据资产是什么。数据资产不等同于数据，数据资产是唯一的，能为业务产生价值的数据。对于同一堆数据，不同业务部门所关注的数据指标可能完全不同，怎么让各个跨域的业务变成统一的标准，就需要规划企业的数据全景图，将所有有可能用上的、所有对企业有可能有价值的数据都规划出来，最终梳理出企业的数据资产目录。在这个时候不需要考虑有没有系统、有没有数据，只需要关注哪些数据是对企业业务有价值的。这一层不建议做得太细，太细就难以形成标准，不能适用于多个场景了。数据治理是数据中台很重要的一个领域，ThoughtWorks认为在现在业务边界消失、需求快速变化的情况下，企业需要具备精益数据治理的能力——Lean Data Governance。传统的中心化、事前控制式的数据治理方式，要改变为去中心化、事后服务式的治理方式。</p>
+<p>2.数据资产的获取和存储</p>
+<p>从广义上来讲，数据中台要为企业提供强大的数据资产的获取和存储的能力。但是这个能力不是数据中台的核心功能，很多企业可以基于原来的数据平台，数据仓库等已有的工具来提供数据采集和存储的能力。</p>
+<p>3.数据的共享和协作</p>
+<p>企业的数据中台一定是跨域的，需要让所有的人都知道数据资产目录在哪里。不能因为数据安全，就不让大家知道企业有什么数据。没有共享和开放，数据没有办法流动起来，没有流动的话数据的价值产生的速度就会非常慢。所以在数据安全的基础上，企业的数据资产目录要对利益相关者、价值创造者开放，要让业务人员能够做到“Self-Service”。</p>
+<p>数据资产目录是数据中台很核心的一个基础能力，但是往往目前很多的企业都尚未建立这个能力，这也是导致数据在企业内部不开放，不共享，不被利用的很重要的一个原因。</p>
+<p>4.业务价值的探索和分析</p>
+<p>数据中台不仅要建立到源数据的通路，还需要提供分析数据的工具和能力，帮助业务人员去探索和发现数据的业务价值。一个好的数据中台解决方案中需要针对不同业务岗位的用户提供个性化的数据探索和分析的工具，并且在此基础上一键生成数据API，以多样化的方式提供给前台系统。</p>
+<p>5.数据服务的构建和治理</p>
+<p>数据中台需要保证数据服务的性能和稳定性，以及数据质量和准确性，还需要具备强大的服务治理能力。数据服务要在一开始就有整体的顶层设计，从而能够将数据服务做分类，打标签，能够更方便的被搜索被调用，让好的服务浮现出来，让质量不高的服务自动的退市被销毁。</p>
+<p>数据中台是一个生态平台，在数据中台上面会不断生长各种数据服务，所以从一开始就构建好数据服务的治理结构是非常重要的，就想经营一个市场一样。</p>
+<p>6.数据服务的度量和运营</p>
+<p>如果数据中台最终只是做到把数据给到业务人员，那它就只是一个搬运工的角色，数据中台的核心是为业务应用提供有业务价值的数据服务。所以度量和运营数据服务的能力是数据中台的业务能力。</p>
+<p>数据中台应该能够对提供的数据服务及相关行为做持续跟踪和记录，包括哪些数据服务被哪个部门使用、用了多少次等，通过这些去度量每一个数据服务的业务价值。</p>
+<p>数据中台是一个需要用互联网思维去经营的利润中心平台，数据中台的经营分析人员需要分·析务，了解为什么今天上午这个财务部门的人用了数据中台、调用了十次，下午他不用了，原因是什么，调用了这些数据服务的人通常还会调用哪些其他的数据服务。这些都需要相应地做记录、做日志、做分析，要把数据当做像电商平台一样去经营，然后实时地根据这些业务行为数据去提醒数据服务提供方，调整、改变、优化数据服务，这才是可经营的数据中台，也只有这样业务部门才能得到最快的支持和响应。</p>
+<p>在这样的一个功能愿景下，我们初步定义了一个数据中台的典型逻辑功能架构：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190410212852460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这个架构中，把数据中台比喻为数据工厂，具备数据工厂的典型功能架构。</p>
+<p>7.数据中台和业务中台服务有什么区别</p>
+<p>应该如何去界定和划分？</p>
+<p>在目前，与数据中台齐名的还有业务中台，但是业务中台和数据中台有什么区别呢？</p>
+<p>数据中台和业务中台都是为业务系统提供服务的中台层，他们的区别在于提供的服务不一样。</p>
+<p>我们举几个例子：</p>
+<p>多个电商渠道使用一个下单服务，一个订单接口同时为多个前台系统提供服务，这是业务中台提供的能力。</p>
+<p>多个前台系统，根据一个用户的手机号，获取对应的画像，用户的标签，这是数据中台提供的服务。</p>
+<p>将多个支付通道，抽象建立成一个支付API，暴露给前台业务系统，这是业务中台提供的能力。</p>
+<p>通过一个订单编号，来获取可能的商品推荐清单，从而做到交叉销售，这是数据中台提供的服务。</p>
+<p>所以，我们可以总结一下：<br><img src="https://img-blog.csdnimg.cn/20190410213000560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvd290dW8=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>业务中台提供的是可复用的流程类，交易类服务，是为了让业务交易同口径，让前台系统更标准，更规范，迭代速度更快，解决效率和产生数据不一致的问题。对应到API，是业务命令式API。</p>
+<p>数据中台提供的是基于跨域数据的分析，洞察，训练产生的数据服务，是给前台系统提供实时决策数据。对应到API是，计算类的智能API和查询类的数据API。</p>
+<p>一句话总结：业务中台让前台系统更敏捷，数据中台让前台业务系统更智慧。</p>
+<p>8.企业数据中台的团队如何构建？绩效如何评价？</p>
+<p>数据中台是距离业务更近的能力平台，数据中台是一个需要持续运营的数据服务业务平台，所以数据中台的团队不仅仅是一个技术团队，应该将数据中台当做一个产品团队来构建，整体的结构如下：</p>
+<p>数据中台提供两类服务：</p>
+<p>一类是数据资产目录，数据探索，数据分析等服务，让业务和应用部门的人员能够在数据中台上协作的玩数据。</p>
+<p>一类是数据服务，让各个业务系统能够调用这些服务，包括决策分析类的非实时服务和实时的嵌入式交易规则服务。</p>
+<p>对应到这两类服务，数据中台的团队应该包括以下三组：</p>
+<p>中台运营团队：</p>
+<p>将整个数据中台的服务和功能作为产品来运营，对应的绩效是用户满意度，用户存留，这些用户相关的指标。</p>
+<p>中台开发团队：</p>
+<p>负责数据中台的功能层开发，包括平中台本身的架构，中台上的应用（客户服务，业务监控等）功能的开发，对应的绩效是功能的稳定性和客户的满意度。</p>
+<p>数据服务开发团队：</p>
+<p>负责数据中台之上的数据服务的开发，包括数据处理链的开发，服务的开发等，对应的绩效是数据服务的稳定性， 性能和客户的满意度等。</p>
+<p>参考这样的三个团队组成， 分别应该包括如下角色：</p>
+<p>数据中台架构师：进行整体数据中台的技术架构设计，保证数据中台架构的可持续性，稳定性和扩容弹性。</p>
+<p>DataOps工程师：从基础能力上保障数据中台的运行的稳定性和持续演进。</p>
+<p>数据工程师：数据处理工程师，负责数据的获取，处理，建立数据处理链。</p>
+<p>数据服务产品团队：数据服务的产品团队，包括产品经理(PO)，业务分析师，体验设计师，还有算法工程师，和数据工程师和数据运营分析师一起协作，创新、设计、生产数据服务。</p>
+<p>数据运营分析师：将数据服务作为产品来运营的数据运营分析师，通过对数据服务上线后被调用的情况的分析来运营数据服务，像经营一个互联网产品一样来经营数据服务。</p>
+<p>数据中台某种角度上，上是一个数据服务的创新、生产、交易的数据服务市场，那么企</p>
+<p>业对于数据中台整体的绩效评价方法也就出来了，那就是：</p>
+<p>企业评价数据中台的标准：数据中台服务的客户，也就是业务系统的满意度。</p>
+<p>那么如何度量业务系统的满意度呢？我们认为，标准很简单，也很清晰，那就是数据中台提供的的数据服务被业务系统，被业务人员使用的频率。业务人员和业务系统调用多的服务，一定是对业务更有帮助的数据服务。</p>
+<p>最后，我们在回顾一下这八个重要的问题及解读：</p>
+<p>1.数据中台是什么，数据中台对于业务的价值是什么？</p>
+<p>数据中台是数据服务(Data API)工厂,打造高数据响应力的企业</p>
+<p>2.数据中台和数据仓库，数据平台的关系是什么？</p>
+<p>数据仓库，数据平台提供的是数据本身，而数据中台提供的是有直接业务价值的数据服务。</p>
+<p>3.数据中台建设的最大挑战是什么，应该遵循什么策略？</p>
+<p>数据中台建设的最大挑战，是如何找到有价值的业务场景。</p>
+<p>数据中台建设的三大策略：围绕业务价值，演进式架构，要有战略耐心。</p>
+<p>4.数据中台的数据质量应该如何保障？</p>
+<p>正视数据质量的问题是客观存在的，采用提倡和实践新的治理方法：精益数据治理（Lean Data Governance)：服务式治理，重场景，元数据驱动</p>
+<p>5.数据中台的典型功能架构是怎样的？</p>
+<p>广义的讲数据中台是直接服务于业务系统的数据服务工厂</p>
+<p>6.数据中台和业务中台服务有什么区别，应该如何去界定和划分？</p>
+<p>业务中台让前台系统更敏捷，数据中台让前台业务系统更智慧。业务中台提供交易API，数据中台提供数据和智能API</p>
+<p>7.企业数据中台的团队如何构建？</p>
+<p>要按照运营一个互联网平台式产品的方式来组织数据中台的团队。</p>
+<p>8.数据中台的绩效如何评价？</p>
+<p>数据中台服务的用户和业务系统的满意度是数据中台的绩效</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/11/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE/" rel="prev" title="用户画像标签">
+      <i class="fa fa-chevron-left"></i> 用户画像标签
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/19/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%9E%84%E5%BB%BA%E5%8E%86%E7%A8%8B/" rel="next" title="数据中台构建历程">
+      数据中台构建历程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Winnie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

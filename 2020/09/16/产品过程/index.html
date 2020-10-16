@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最基本的有5大信任来源：  基于关系的信任，比如朋友的朋友，亲属介绍等，基于现存关系背书，也叫推荐和转介绍，是主要的种草来源之一； 基于共同点的信任，人会因为同样的经历和爱好，更趋于理解彼此的特质属性，更加容易建立信任，同好社群的转化率是极高的； 基于真实的信任，适当地透露自己的个人信息、经验、形象照片等，能极大增加信任度，这也是为什么快手的关注关系要强于抖音，就是真实带来的距离感减弱； 基于交易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品过程">
+<meta property="og:url" content="http://yoursite.com/2020/09/16/%E4%BA%A7%E5%93%81%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Winnie&#39;s big blog">
+<meta property="og:description" content="最基本的有5大信任来源：  基于关系的信任，比如朋友的朋友，亲属介绍等，基于现存关系背书，也叫推荐和转介绍，是主要的种草来源之一； 基于共同点的信任，人会因为同样的经历和爱好，更趋于理解彼此的特质属性，更加容易建立信任，同好社群的转化率是极高的； 基于真实的信任，适当地透露自己的个人信息、经验、形象照片等，能极大增加信任度，这也是为什么快手的关注关系要强于抖音，就是真实带来的距离感减弱； 基于交易">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-16T09:40:51.000Z">
+<meta property="article:modified_time" content="2020-10-16T09:41:16.113Z">
+<meta property="article:author" content="Winnie">
+<meta property="article:tag" content="产品">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/09/16/%E4%BA%A7%E5%93%81%E8%BF%87%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>产品过程 | Winnie's big blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Winnie's big blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/16/%E4%BA%A7%E5%93%81%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Winnie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winnie's big blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          产品过程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-16 17:40:51" itemprop="dateCreated datePublished" datetime="2020-09-16T17:40:51+08:00">2020-09-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-16 17:41:16" itemprop="dateModified" datetime="2020-10-16T17:41:16+08:00">2020-10-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最基本的有5大信任来源：</p>
+<ol>
+<li>基于关系的信任，比如朋友的朋友，亲属介绍等，基于现存关系背书，也叫推荐和转介绍，是主要的种草来源之一；</li>
+<li>基于共同点的信任，人会因为同样的经历和爱好，更趋于理解彼此的特质属性，更加容易建立信任，同好社群的转化率是极高的；</li>
+<li>基于真实的信任，适当地透露自己的个人信息、经验、形象照片等，能极大增加信任度，这也是为什么快手的关注关系要强于抖音，就是真实带来的距离感减弱；</li>
+<li>基于交易的信任，当对方能先从你身上获得价值，你们更有可能进行下一步交易，很多庞氏骗局都是基于这一点；</li>
+<li>基于立场的信任，一起扛过枪的朋友，是最值得信任的，俗称过命的交情。这是因为一起在同一立场对抗过敌人和困难的经历，是非常深刻的信任基点，比如李云龙和楚云飞。</li>
+</ol>
+<h2 id="一、构建"><a href="#一、构建" class="headerlink" title="一、构建"></a>一、构建</h2><p>产品的第一个时期，是建构期，构建产品价值，做用户留存。</p>
+<p>在这个阶段，我们需要构建起产品的基本逻辑。比如在CRM模块，为了增加客户动态的曝光，我们聚合了一个客户动态列表，并在首页预留空间展示。首页的展示逻辑、跳转引流逻辑、列表页的信息结构、展示逻辑，就是在第一个阶段我们需要构建的东西。只有构建了基本的逻辑，我们才能理顺用户的需求和产品价值所在，从而让这个产品模块稳定运行。</p>
+<p>构建期要秉持MVP理论，最快速进行用户研究和试错，把产品核心价值路径搭建起来。</p>
+<p>比如做商务视频通话这个case，构建期要先把通话质量、掉线、延时等指标做到标准级别，而视频转语音、美颜等功能，都可以往后放。</p>
+<h2 id="二、解构"><a href="#二、解构" class="headerlink" title="二、解构"></a>二、解构</h2><p>产品的第二个时期，是解构期，提升产品友好度，做用户新增。</p>
+<p>当建构成功后，产品具备了让用户留存的基本价值，口碑也在慢慢积累，用户自传播也慢慢酝酿起来。所以，为了支持新增用户，提升产品友好度，我们要降低产品的使用门槛。主要做法就是，通过新手引导、积分体系等功能，把整体的用户体验提升上去。只有成功解构，我们才具备做大规模增长的前提。</p>
+<p>也就是说，在我们做外部推广之前，要把引导和体验补齐。</p>
+<h2 id="三、增长"><a href="#三、增长" class="headerlink" title="三、增长"></a>三、增长</h2><p>产品的第三个时期，是增长期，进行大范围推广，扩大规模。</p>
+<p>产品进入到这个时期，更多的工作是在产品外部，即并不是产品本身功能的大改，而是把验证通过的产品逻辑，推广给更多人，来形成规模效应。这个阶段，产品经理的工作就很多了，比如做渠道投放、设计落地页、拉新奖励机制等。</p>
+<p>比如说：为了让我们这个模块的用户增长更快，我们设计了导入通讯录的功能，同时，还加强了视觉上入口的强度，不但在首页给了曝光，还在饱和度上，高于整个页面，鼓励用户点击。</p>
+<h2 id="四、价值"><a href="#四、价值" class="headerlink" title="四、价值"></a>四、价值</h2><p>产品的第四个时期，是价值期，为高端用户提供价值，挖掘存量，做分层精细化运营。</p>
+<p>产品进入到价值期，增长也不是主旋律了，最重要的是做好存量的经营，不能像熊瞎子掰苞米一样，辛辛苦苦拉来的用户，因为看不到未来，都跑掉了。为了能让用户看到未来、看到未来的价值，就要着眼于头部用户，无论是搭建账号价值体系也好，做个性化推荐也好。总之就是把存量的价值，通过巧妙的策略和手段，分配给优秀的用户，这样能够促使整个产品生态良好发展。</p>
+<p>存量经营的核心，就是数据分析和精细化运营，充分挖掘每个用户群体的价值，才能让整个生态的健康度提升，价值提升。</p>
+<h2 id="五、商业"><a href="#五、商业" class="headerlink" title="五、商业"></a>五、商业</h2><p>产品的第五个时期，是商业期，要把整个生态的商业化闭环完成，实现盈利。</p>
+<p>生态的建立完成，标志着价值的源源不断产出，也意味着这些价值可以用来变现，来支持生态的优化，从而影响整个行业不断进步向上。互联网商业化的玩法，主要是广告和付费。在这个阶段，用户使用数据已经积累到一定量级，可以设计针对不同用户的不同玩法，比如高端VIP服务。</p>
+<p>而上面讲过，产品阶段和用户生命周期是强相关的。单纯知道这五个周期的概念和玩法只是基础，还需要了解如何判断。</p>
+<p>一般的判断方法，就是依据用户研究和数据分析，结合自身资源和目标来判断。</p>
+<p>一般来说，产品都是失败在，没有经过前两个时期，就贸然做增长，增长过来的用户也会白白流失，徒增成本，还把口碑毁掉了。</p>
+<p>要准确抓到增长的最佳时期，就要时刻关注产品的关键指标。</p>
+<p>比如：各大核心功能转化漏斗的数据，还有用户使用时长的数据，以及各类性能数据。只有这些数据优化到一定程度，我们才可以开启增长。</p>
+<p>同时，在用户研究方面，在版本稳定后，要找到各层级的用户进行深度访谈，看看是否能够顺畅使用，在理解用户真实场景使用习惯的同时，也积累后续迭代的痛点。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%A7%E5%93%81/" rel="tag"># 产品</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/10/%E6%8A%93%E4%BD%8F%E7%94%A8%E6%88%B7%E5%86%99%E6%96%87%E6%A1%88/" rel="prev" title="抓住用户写文案">
+      <i class="fa fa-chevron-left"></i> 抓住用户写文案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/16/%E6%B6%88%E6%81%AF%E7%AD%96%E7%95%A5/" rel="next" title="消息策略">
+      消息策略 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、构建"><span class="nav-number">1.</span> <span class="nav-text">一、构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、解构"><span class="nav-number">2.</span> <span class="nav-text">二、解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、增长"><span class="nav-number">3.</span> <span class="nav-text">三、增长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、价值"><span class="nav-number">4.</span> <span class="nav-text">四、价值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、商业"><span class="nav-number">5.</span> <span class="nav-text">五、商业</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Winnie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

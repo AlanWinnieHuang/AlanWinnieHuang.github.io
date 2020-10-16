@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="引言一个APP最根本的便是用户，那么当然用户也分许多种类，比如活跃用户、留存用户、流失用户等等，那么一般情况下又是怎么来分析活跃用户的呢？首先，我们来看一下用户的具体分类。 不同类型的用户用户包含各种类型，反应了不同群体的特征和想法。在使用整个产品的周期中，我们应定义更全面的指标： 流失用户：有一段时间没有再打开产品，那么我们就视为流失用户，根据产品的属性，可以按30天，60天，90天等划分。 不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户活跃">
+<meta property="og:url" content="http://yoursite.com/2020/10/16/%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83/index.html">
+<meta property="og:site_name" content="Winnie&#39;s big blog">
+<meta property="og:description" content="引言一个APP最根本的便是用户，那么当然用户也分许多种类，比如活跃用户、留存用户、流失用户等等，那么一般情况下又是怎么来分析活跃用户的呢？首先，我们来看一下用户的具体分类。 不同类型的用户用户包含各种类型，反应了不同群体的特征和想法。在使用整个产品的周期中，我们应定义更全面的指标： 流失用户：有一段时间没有再打开产品，那么我们就视为流失用户，根据产品的属性，可以按30天，60天，90天等划分。 不">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-16T09:55:53.000Z">
+<meta property="article:modified_time" content="2020-10-16T09:56:11.073Z">
+<meta property="article:author" content="Winnie">
+<meta property="article:tag" content="产品">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/10/16/%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>用户活跃 | Winnie's big blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Winnie's big blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/16/%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Winnie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winnie's big blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用户活跃
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-16 17:55:53 / 修改时间：17:56:11" itemprop="dateCreated datePublished" datetime="2020-10-16T17:55:53+08:00">2020-10-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>一个APP最根本的便是用户，那么当然用户也分许多种类，比如活跃用户、留存用户、流失用户等等，那么一般情况下又是怎么来分析活跃用户的呢？首先，我们来看一下用户的具体分类。</p>
+<h3 id="不同类型的用户"><a href="#不同类型的用户" class="headerlink" title="不同类型的用户"></a>不同类型的用户</h3><p>用户包含各种类型，反应了不同群体的特征和想法。在使用整个产品的周期中，我们应定义更全面的指标：</p>
+<p>流失用户：有一段时间没有再打开产品，那么我们就视为流失用户，根据产品的属性，可以按30天，60天，90天等划分。</p>
+<p>不活跃用户：有一段时间没有打开产品，为了和流失区分开来，需要选择无交集的时间范围。比如流失用户是60天以上没打开产品，那么不活跃则是0～60天没打开。</p>
+<p>回流用户：有一段时间没用产品，之后突然回来再次使用，则称为回流用户。回流用户是活跃用户，且是由流失用户或不活跃用户唤回而来。</p>
+<p>活跃用户：一段时间内打开过产品。</p>
+<p>忠诚用户：也可以叫超级活跃用户，长期持续使用产品，比如连续四周，或者一个月内15天等。</p>
+<p>现在我们发现，不论是活跃用户还是不活跃用户的维度，都一下子丰富了起来。</p>
+<h4 id="活跃用户"><a href="#活跃用户" class="headerlink" title="活跃用户"></a>活跃用户</h4><p>很多人对于什么是活跃用户的概念还很模糊，大多数运营数据分析平台上都直接给出了一个活跃用户的数字，那么什么是活跃用户呢？ 用户每天既会不断新增，也会不断流失，如果单独只看每日活跃用户数，是很难发现问题的本质的，所以通常会结合活跃率和整个APP的生命周期来看。</p>
+<p>活跃率是指活跃用户/总用户，通过这个比值可以了解你的用户的整体活跃度，但随着时间周期的加长，用户活跃率总是在逐渐下降的，所以经过一个长生命周期（3个月或半年）的沉淀，用户的活跃率还能稳定保持到5%-10%，则是一个非常好的用户活跃的表现，当然也不能完全套用，得视产品特点来看。</p>
+<p>概括来说，增长黑客在衡量“活跃度”时，会通过访问次数、访问时长、收藏指数和相关影响因素几个维度来判断用户的活跃情况，并按连续活跃天数和阶段内任意活跃天数2个时间维度对用户活跃度进行整体分析。</p>
+<h3 id="如何进行用户活跃度分析？"><a href="#如何进行用户活跃度分析？" class="headerlink" title="如何进行用户活跃度分析？"></a>如何进行用户活跃度分析？</h3><h4 id="1-通过日访问次数评估用户活跃度"><a href="#1-通过日访问次数评估用户活跃度" class="headerlink" title="1.通过日访问次数评估用户活跃度"></a>1.通过日访问次数评估用户活跃度</h4><p>访问次数代表用户每日使用产品的频次，我们将计算所有访问次数大于1次的用户，来计算这些用户的平均访问次数，或者设定一个固定值，例如某位用户连续7平均访问产品的次数为3-5次，那么我们就可以把4设定成固定值。</p>
+<p>在基于访问次数计算出平均值或设定了固定值（A）之后，我们要统计每日访问次数大于1次并且小于A50%的用户，以及每日访问次数大于A50%并小于A的用户，以及日访问次数大于A的用户分别的数量。统计的目的在于通过访问次数将用户进行分层，高于A值的用户是我们产品的绝对活跃用户，对于没有达到A值的用户可以通过运营活动重点提升日访问次数。</p>
+<h4 id="2-通过日访问时长评估用户活跃度"><a href="#2-通过日访问时长评估用户活跃度" class="headerlink" title="2.通过日访问时长评估用户活跃度"></a>2.通过日访问时长评估用户活跃度</h4><p>与通过访问次数计算用户活跃度的方式相同，找出用户使用时长的衡量值B，通过B对用户进行筛选分组。</p>
+<h4 id="3-通过“收藏指数”评估用户活跃度"><a href="#3-通过“收藏指数”评估用户活跃度" class="headerlink" title="3.通过“收藏指数”评估用户活跃度"></a>3.通过“收藏指数”评估用户活跃度</h4><p>一般来说，用户产生收藏行为代表着对产品内容的认可，如某篇文章，某件商品。</p>
+<p>在实际统计中，“收藏指数”因产品所在行业的不同而不同，需要针对产品所在行业进行个性化定义，例如社区类产品要统计有过发帖、回帖行为的用户，资讯类产品要统计日浏览文章大于5篇（举例）的用户，电商类产品要统计日浏览商品大于5件（举例）的用户等。</p>
+<p>同样，通过对“收藏指数”的定义，计算出相关用户行为的衡量标准，我们称其为C值， C值为活跃用户必须满足的条件，继而可以筛选出高出C值50%、100%甚至更多的用户数量。</p>
+<h4 id="4-找出用户活跃度的影响因素"><a href="#4-找出用户活跃度的影响因素" class="headerlink" title="4.找出用户活跃度的影响因素"></a>4.找出用户活跃度的影响因素</h4><p>在影响因素这项分析上，需要统计不同特征用户的活跃度人数。例如领取红包后1-3天的活跃用户变化情况，与非领取红包用户的活跃度进行对比，再比如连续打卡3天、5天的用户在活跃度上的变现差异。</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>以上是4项用户活跃度的衡量方式，在统计时，首先需要筛选出满足条件的用户数量，然后计算满足条件用户在整体用户中的占比</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%A7%E5%93%81/" rel="tag"># 产品</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/16/%E6%B6%88%E6%81%AF%E7%AD%96%E7%95%A5/" rel="prev" title="消息策略">
+      <i class="fa fa-chevron-left"></i> 消息策略
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同类型的用户"><span class="nav-number">2.</span> <span class="nav-text">不同类型的用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#活跃用户"><span class="nav-number">2.1.</span> <span class="nav-text">活跃用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何进行用户活跃度分析？"><span class="nav-number">3.</span> <span class="nav-text">如何进行用户活跃度分析？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-通过日访问次数评估用户活跃度"><span class="nav-number">3.1.</span> <span class="nav-text">1.通过日访问次数评估用户活跃度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-通过日访问时长评估用户活跃度"><span class="nav-number">3.2.</span> <span class="nav-text">2.通过日访问时长评估用户活跃度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-通过“收藏指数”评估用户活跃度"><span class="nav-number">3.3.</span> <span class="nav-text">3.通过“收藏指数”评估用户活跃度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-找出用户活跃度的影响因素"><span class="nav-number">3.4.</span> <span class="nav-text">4.找出用户活跃度的影响因素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Winnie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
